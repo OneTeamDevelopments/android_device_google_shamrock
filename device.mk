@@ -50,6 +50,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
 
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8952 \
@@ -116,7 +122,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
-    
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/shamrock/overlay
 
