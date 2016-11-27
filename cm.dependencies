@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "android_device_google_msm8952-common",
+    "target_path": "device/google/msm8952-common"
+  },
+  {
+    "repository": "android_kernel_google_shamrock",
+    "target_path": "kernel/google/shamrock"
+  },
+]

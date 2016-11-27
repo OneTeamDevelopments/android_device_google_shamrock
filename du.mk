@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The AOSP-OMS Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
 
 $(call inherit-product, device/google/shamrock/full_shamrock.mk)
 
-# Inherit some common AOSP-OMS stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/du/config/common_full_phone.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8952
 
-PRODUCT_NAME := aosp_shamrock
+PRODUCT_NAME := du_shamrock
 BOARD_VENDOR := google
 PRODUCT_DEVICE := shamrock
 
