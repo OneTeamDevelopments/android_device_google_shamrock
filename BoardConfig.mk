@@ -21,3 +21,8 @@ include device/google/shamrock/board/*.mk
 -include vendor/google/shamrock/BoardConfigVendor.mk
 
 USE_PREBUILT_LIBQSAP_SDK := true
+TARGET_PROVIDES_WCNSS_QMI := true
+TARGET_RIL_VARIANT := caf
+
+# Enable Minikin text layout engine
+USE_MINIKIN := true
