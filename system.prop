@@ -1,4 +1,4 @@
-# Build By One Team (@Deftones)
+# Build By One Team
 import /oem/oem.prop ro.product.model
 import /oem/oem.prop persist.radio.multisim.config
 ro.product.model.platform=1

@@ -20,9 +20,7 @@ include device/google/shamrock/board/*.mk
 # inherit from the proprietary version
 -include vendor/google/shamrock/BoardConfigVendor.mk
 
-USE_PREBUILT_LIBQSAP_SDK := true
-TARGET_PROVIDES_WCNSS_QMI := true
-TARGET_RIL_VARIANT := caf
-
-# Enable Minikin text layout engine
-USE_MINIKIN := true
+# Skip things to save build time
+BOARD_SKIP_ANDROID_DOC_BUILD := true
+WITHOUT_CHECK_API := true
+BLOCK_BASED_OTA := false
