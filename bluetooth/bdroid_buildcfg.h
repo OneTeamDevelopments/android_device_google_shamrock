@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project <http://www.cyanogenmod.org>
+ * Copyright (C) 2017 The LineageOS Project <http://www.lineageos.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,19 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "GM 5 Plus"
 #define BLUETOOTH_QTI_SW TRUE
-#define BLE_VND_INCLUDED   TRUE
+#define BTIF_HF_WBS_PREFERRED TRUE
+#define BTM_WBS_INCLUDED TRUE
+#define BTA_SKIP_BLE_READ_REMOTE_FEAT TRUE
+#define BTA_HOST_INTERLEAVE_SEARCH TRUE
+#define MAX_L2CAP_CHANNELS 16
+
+// skips conn update at conn completion
+#define BTA_BLE_SKIP_CONN_UPD TRUE
+#define BTA_DISABLE_DELAY 100 /* in milliseconds */
+#define BTM_BLE_ADV_TX_POWER {-21, -15, -7, 1, 9}
+#define BLE_PERIPHERAL_ADV_NAME FALSE
+#define BTM_LE_SECURE_CONN TRUE
+#define BT_CLEAN_TURN_ON_DISABLED 1
+
 #endif

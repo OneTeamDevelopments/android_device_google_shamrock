@@ -1,4 +1,4 @@
-# Build By One Team
+# Build By One Team [Incredible]
 import /oem/oem.prop ro.product.model
 import /oem/oem.prop persist.radio.multisim.config
 ro.product.model.platform=1
@@ -57,17 +57,6 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 persist.gps.qc_nlp_in_use=1
 persist.loc.nlp_name=com.qualcomm.location
 ro.gps.agps_provider=1
-ro.hwui.texture_cache_size=72
-ro.hwui.layer_cache_size=48
-ro.hwui.r_buffer_cache_size=8
-ro.hwui.path_cache_size=32
-ro.hwui.gradient_cache_size=1
-ro.hwui.drop_shadow_cache_size=6
-ro.hwui.texture_cache_flushrate=0.4
-ro.hwui.text_small_cache_width=1024
-ro.hwui.text_small_cache_height=1024
-ro.hwui.text_large_cache_width=2048
-ro.hwui.text_large_cache_height=2048
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
 persist.data.mode=concurrent
@@ -99,3 +88,30 @@ media.aac_51_output_enabled=true
 persist.timed.enable=true
 wifi.interface=wlan0
 qemu.hw.mainkeys=0
+av.streaming.offload.enable=true
+audio.offload.buffer.size.kb=64
+audio.offload.gapless.enabled=true
+audio.offload.min.duration.secs=30
+audio.offload.pcm.16bit.enable=false
+audio.offload.pcm.24bit.enable=true
+use.voice.path.for.pcm.voip=true
+drm.service.enabled=1
+vidc.enc.narrow.searchrange=1
+media.aac_51_output_enabled=true
+ro.config.max_starting_bg=8
+ro.sys.fw.use_trim_settings=true
+ro.qualcomm.bt.hci_transport=smd
+qcom.bluetooth.soc=smd
+debug.composition.type=c2d
+debug.mdpcomp.idletime=600
+persist.hwc.ptor.enable=true
+persist.data.qmi.adb_logmask=0
+persist.radio.apm_sim_not_pwdn=1
+ro.telephony.call_ring.multiple=false
+ro.use_data_netmgrd=true
+ro.disableWifiApFirmwareReload=true
+wifi.interface=wlan0
+ro.product.first_api_level=22
+persist.camera.cpp.duplication=false
+persist.camera.hal.debug.mask=0
+ro.sf.lcd_density=420

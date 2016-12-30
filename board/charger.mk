@@ -1,2 +1,0 @@
-# Charger
-BOARD_CHARGER_DISABLE_INIT_BLANK := true

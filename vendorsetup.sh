@@ -1,1 +1,1 @@
-add_lunch_combo aosp_shamrock-userdebug
+add_lunch_combo cm_shamrock-userdebug
