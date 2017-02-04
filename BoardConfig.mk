@@ -48,7 +48,7 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 ENABLE_CPUSETS := true
 TARGET_KERNEL_SOURCE := kernel/google/shamrock
-TARGET_KERNEL_CONFIG := cyanogenmod_shamrock_defconfig
+TARGET_KERNEL_CONFIG := lineageos_shamrock_defconfig
 TARGET_KERNEL_ARCH := arm
 
 # Audio
