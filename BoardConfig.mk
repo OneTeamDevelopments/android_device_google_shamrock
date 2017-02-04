@@ -148,7 +148,3 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
-# Skip things to save build time
-BOARD_SKIP_ANDROID_DOC_BUILD := true
-WITHOUT_CHECK_API := true
-BLOCK_BASED_OTA := false
