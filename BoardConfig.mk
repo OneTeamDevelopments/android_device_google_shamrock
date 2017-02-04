@@ -139,9 +139,6 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
 # Camera
 BOARD_CAMERA_SENSORS := imx220 imx230 ov8858_q8v19w_spirit
 TARGET_USE_VENDOR_CAMERA_EXT := true
