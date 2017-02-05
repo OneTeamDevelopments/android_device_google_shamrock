@@ -1,0 +1,128 @@
+# Adreno GPU
+etc/firmware/a225_pfp.fw
+etc/firmware/a225_pm4.fw
+etc/firmware/a225p5_pm4.fw
+etc/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw
+etc/firmware/a330_pfp.fw
+etc/firmware/a330_pm4.fw
+etc/firmware/a420_pfp.fw
+etc/firmware/a420_pm4.fw
+etc/firmware/a530_pfp.fw
+etc/firmware/a530_pm4.fw
+etc/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw
+
+# Audio
+etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Bluetooth_cal.acdb
+etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_General_cal.acdb
+etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Global_cal.acdb
+etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Handset_cal.acdb
+etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Hdmi_cal.acdb
+etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Headset_cal.acdb
+etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Speaker_cal.acdb
+lib/hw/audio.primary.msm8952.so
+
+# Bluetooth
+bin/btnvtool
+bin/hci_qcomm_init
+
+# Camera
+bin/mm-qcamera-daemon
+lib/hw/camera.msm8952.so
+lib/libfilterpack_facedetect.so
+lib/libmmcamera_interface.so
+lib/libmmjpeg_interface.so
+lib/libmm-qcamera.so
+
+# CPP Firmware
+etc/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_4_0.fw
+etc/firmware/cpp_firmware_v1_5_0.fw
+etc/firmware/cpp_firmware_v1_6_0.fw
+etc/firmware/cpp_firmware_v1_8_0.fw
+etc/firmware/cpp_firmware_v1_10_0.fw
+
+# DRM
+bin/qseecomd
+
+# Encryption
+lib/libdivxdrmdecrypt.so
+
+# GPS
+bin/gpsone_daemon
+bin/loc_launcher
+lib/hw/gps.default.so
+lib/libgps.uils.so
+lib/libloc_api_v02.so
+lib/libloc_core.so
+lib/libloc_ds_api.so
+lib/libloc_eng.so
+
+# Media
+lib/libqomx_core.so
+
+# Perf
+bin/msm_irqbalance
+bin/pm-proxy
+bin/pm-service
+
+# Permissions
+etc/permissions/cneapiclient.xml
+etc/permissions/com.qti.location.sdk.xml
+etc/permissions/com.qualcomm.location.xml
+etc/permissions/com.quicinc.cne.xml
+etc/permissions/ConnectivityExt.xml
+etc/permissions/qcnvitems.xml
+etc/permissions/qcrilhook.xml
+
+# Qualcomm Framework
+bin/irsc_util
+
+# Radio
+bin/netmgrd
+bin/qmuxd
+bin/radish
+bin/rmt_storage
+qcril/qcril.db
+lib/librilqmiservices.so
+
+# Sensors
+bin/sensors.qcom
+etc/firmware/goodix_config.cfg
+etc/firmware/goodix_firmware.bin
+etc/sensors/hals.conf
+etc/sensors/sensor_def_qcomdev.conf
+lib/hw/sensors.msm8952.so
+
+# Signed Venus (media) firmware
+etc/firmware/venus.b00
+etc/firmware/venus.b01
+etc/firmware/venus.b02
+etc/firmware/venus.b03
+etc/firmware/venus.b04
+etc/firmware/venus.mbn
+etc/firmware/venus.mdt
+etc/firmware/venus-v1.b00
+etc/firmware/venus-v1.b01
+etc/firmware/venus-v1.b02
+etc/firmware/venus-v1.b03
+etc/firmware/venus-v1.b04
+etc/firmware/venus-v1.mbn
+etc/firmware/venus-v1.mdt
+
+# Time Services
+bin/time_daemon
+
+# Wlan
+etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
+
+# Other
+etc/firmware/DE.o.msm8952
+etc/firmware/DE.o.msm8976
+lib/libdivxdrmdecrypt.so
+lib/libNimsWrap.so
