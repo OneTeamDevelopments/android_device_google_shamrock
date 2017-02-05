@@ -52,7 +52,7 @@ qcom.bluetooth.soc=smd
 ro.qualcomm.bt.hci_transport=smd 
 
 # Camera
-persist.camera.HAL3.enabled=1
+persist.camera.HAL3.enabled=0
 persist.camera.hal.debug.mask=0
 persist.camera.cpp.duplication=false
 
