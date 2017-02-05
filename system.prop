@@ -1,9 +1,9 @@
-# Build By One Team [Incredible]
-import /oem/oem.prop ro.product.model
-import /oem/oem.prop persist.radio.multisim.config
-ro.product.model.platform=1
-audio.dolby.ds2.enabled=true
+# 
+#  System prop for Gm 5+
+#
+# Audio
 audio.deep_buffer.media=true
+audio.dolby.ds2.enabled=true
 audio.offload.buffer.size.kb=64
 audio.offload.disable=1
 audio.offload.gapless.enabled=true
@@ -15,6 +15,24 @@ audio.offload.track.enable=false
 audio.offload.video=false
 audio.playback.mch.downsample=true
 audio.safx.pbe.enabled=true
+ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.ssr=false
+tunnel.audio.encode=false
+vidc.enc.narrow.searchrange=1
+voice.conc.fallbackpath=deep-buffer
+voice.playback.conc.disabled=true
+voice.record.conc.disabled=false
+voice.voip.conc.disabled=true
+use.voice.path.for.pcm.voip=true
+
+persist.audio.calfile0=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Bluetooth_cal.acdb
+persist.audio.calfile1=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_General_cal.acdb
+persist.audio.calfile2=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Global_cal.acdb
+persist.audio.calfile3=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Handset_cal.acdb
+persist.audio.calfile4=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Hdmi_cal.acdb
+persist.audio.calfile5=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Headset_cal.acdb
+persist.audio.calfile6=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Speaker_cal.acdb
+
 persist.audio.dirac.speaker=true
 persist.audio.fluence.audiorec=false
 persist.audio.fluence.speaker=true
@@ -23,29 +41,39 @@ persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=true
 persist.sys.button_jack_profile=volume
 persist.sys.button_jack_switch=0
-ro.qc.sdk.audio.fluencetype=none
-ro.qc.sdk.audio.ssr=false
-tunnel.audio.encode=false
-use.voice.path.for.pcm.voip=true
-voice.conc.fallbackpath=deep-buffer
-voice.playback.conc.disabled=true
-voice.record.conc.disabled=false
-voice.voip.conc.disabled=true
-persist.audio.calfile0=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Bluetooth_cal.acdb
-persist.audio.calfile1=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_General_cal.acdb
-persist.audio.calfile2=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Global_cal.acdb
-persist.audio.calfile3=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Handset_cal.acdb
-persist.audio.calfile4=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Hdmi_cal.acdb
-persist.audio.calfile5=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Headset_cal.acdb
-persist.audio.calfile6=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Speaker_cal.acdb
+
+# Activity Manager
+ro.config.max_starting_bg=8
+ro.sys.fw.use_trim_settings=true
+
+# Bluetooth
 bluetooth.hfp.client=1
+qcom.bluetooth.soc=smd
+ro.qualcomm.bt.hci_transport=smd 
+
+# Camera
 persist.camera.HAL3.enabled=1
+persist.camera.hal.debug.mask=0
+persist.camera.cpp.duplication=false
+
+# CNE
 persist.cne.feature=1
+
+# DPM
 persist.dpm.feature=5
 persist.dpm.nsrm.bkg.evt=3955
+
+# DRM properties
+drm.service.enabled=1
+
+# Dex2oat threads for faster app installation
 ro.sys.fw.dex2oat_thread_count=4
+
+# Display
+debug.composition.type=c2d
 debug.egl.hw=0
 debug.enable.sglscale=1
+debug.mdpcomp.idletime=600
 debug.mdpcomp.logs=0
 debug.sf.hw=0
 dev.pm.dyn_samplingrate=1
@@ -53,23 +81,37 @@ persist.demo.hdmirotationlock=false
 persist.hwc.mdpcomp.enable=true
 persist.hwc.downscale_threshold=1.15
 ro.opengles.version=196609
+ro.sf.lcd_density=420
+
+# FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
-persist.gps.qc_nlp_in_use=1
-persist.loc.nlp_name=com.qualcomm.location
-ro.gps.agps_provider=1
+
+# # First api level, device has been commercially launched
+ro.product.first_api_level=22
+
+# Graphics
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
 persist.data.mode=concurrent
+persist.data.qmi.adb_logmask=0
+persist.hwc.ptor.enable=true
+
+# GPS
+persist.gps.qc_nlp_in_use=1
+persist.loc.nlp_name=com.qualcomm.location
+ro.gps.agps_provider=1
+
+# Media
 DEVICE_PROVISIONED=1
-ril.subscription.types=NV,RUIM
-rild.libargs=-d /dev/smd0
-rild.libpath=/vendor/lib/libril-qc-qmi-1.so
-ro.telephony.default_cdma_sub=0
-ro.telephony.default_network=22,22
-telephony.lteOnCdmaDevice=1
-persist.radio.apm_sim_not_pwdn=1
-persist.radio.custom_ecc=1
-persist.radio.sib16_support=1
+mm.enable.smoothstreaming=true
+mmp.enable.3g2=true
+media.aac_51_output_enabled=true
+media.msm8956hw=0
+
+# Navbar
+qemu.hw.mainkeys=0
+
+# NITZ
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
 persist.rild.nitz_long_ons_1=
@@ -79,39 +121,37 @@ persist.rild.nitz_short_ons_0=
 persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
+
+# OEM props for device info
+import /oem/oem.prop ro.product.model
+import /oem/oem.prop persist.radio.multisim.config
+ro.product.model.platform=1
+
+# Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-net.tcp.2g_init_rwnd=10
-media.msm8956hw=0
-mm.enable.smoothstreaming=true
-mmp.enable.3g2=true
-media.aac_51_output_enabled=true
-persist.timed.enable=true
-wifi.interface=wlan0
-qemu.hw.mainkeys=0
-av.streaming.offload.enable=true
-audio.offload.buffer.size.kb=64
-audio.offload.gapless.enabled=true
-audio.offload.min.duration.secs=30
-audio.offload.pcm.16bit.enable=false
-audio.offload.pcm.24bit.enable=true
-use.voice.path.for.pcm.voip=true
-drm.service.enabled=1
-vidc.enc.narrow.searchrange=1
-media.aac_51_output_enabled=true
-ro.config.max_starting_bg=8
-ro.sys.fw.use_trim_settings=true
-ro.qualcomm.bt.hci_transport=smd
-qcom.bluetooth.soc=smd
-debug.composition.type=c2d
-debug.mdpcomp.idletime=600
-persist.hwc.ptor.enable=true
-persist.data.qmi.adb_logmask=0
+
+# Radio
 persist.radio.apm_sim_not_pwdn=1
+persist.radio.custom_ecc=1
+persist.radio.sib16_support=1
+persist.radio.apm_sim_not_pwdn=1
+ril.subscription.types=NV,RUIM
+rild.libargs=-d /dev/smd0
+rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 ro.telephony.call_ring.multiple=false
-ro.use_data_netmgrd=true
+ro.telephony.default_cdma_sub=0
+ro.telephony.default_network=22,22
+telephony.lteOnCdmaDevice=1
+
+# TCP
+net.tcp.2g_init_rwnd=10
+
+# Trim properties
+ro.sys.fw.use_trim_settings=true
+
+# Time
+persist.timed.enable=true
+
+# Wifi
 ro.disableWifiApFirmwareReload=true
 wifi.interface=wlan0
-ro.product.first_api_level=22
-persist.camera.cpp.duplication=false
-persist.camera.hal.debug.mask=0
-ro.sf.lcd_density=420
