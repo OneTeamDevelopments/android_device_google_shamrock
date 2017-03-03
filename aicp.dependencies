@@ -1,10 +1,5 @@
 [
   {
-    "repository": "AICP/device_google_msm8952-common",
-    "target_path": "device/google/msm8952-common",
-    "branch":      "n7.1"
-  },
-  {
     "repository": "LineageOS/android_device_qcom_common",
     "target_path": "device/qcom/common",
     "branch":      "cm-14.1"
