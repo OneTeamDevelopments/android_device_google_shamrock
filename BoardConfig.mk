@@ -122,6 +122,9 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
+# Peripheral manager
+TARGET_PER_MGR_ENABLED := true
+
 # Recovery
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
 TARGET_RECOVERY_FSTAB := device/google/shamrock/rootdir/etc/fstab.qcom
@@ -153,4 +156,3 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
-
