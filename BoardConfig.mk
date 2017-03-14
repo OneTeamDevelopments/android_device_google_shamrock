@@ -124,12 +124,11 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
 TARGET_RECOVERY_FSTAB := device/google/shamrock/rootdir/etc/fstab.qcom
 
 # Charger
+WITH_CM_CHARGER := false
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_HAL_STATIC_LIBRARIES += libhealthd.msm8952
 BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
 
-# Don't use the CM charger
-WITH_CM_CHARGER := false
 
 # Dexopt
 ifeq ($(HOST_OS),linux)
