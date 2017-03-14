@@ -101,6 +101,9 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 # Media
 TARGET_HAVE_SIGNED_VENUS_FW := true
 
+# RIL
+TARGET_RIL_VARIANT := caf
+
 # Sepolicy
 BOARD_SEPOLICY_DIRS += device/google/shamrock/sepolicy
 include device/qcom/sepolicy/sepolicy.mk
