@@ -370,4 +370,9 @@
          correctly use them when installed on your device.  Otherwise, keep this disabled
          so that applications can still use their own mechanisms. -->
     <bool name="config_enableAutoPowerModes">true</bool>
+
+    <!-- Double Tap for Camera Gesture -->
+
+    <bool name="config_cameraDoubleTapPowerGestureEnabled">false</bool>
+
 </resources>
