@@ -12,6 +12,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_shamrock.mk
+key 158 BACK VIRTUAL
+key 172 HOME VIRTUAL
+key 580 APP_SWITCH VIRTUAL
