@@ -115,8 +115,7 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.bt.sh \
     init.qcom.usb.rc \
-    init.qcom.power.rc \
-    init.recovery.qcom.rc \
+    init.qcom.post_boot.rc \
     ueventd.qcom.rc
 
 # IPv6
@@ -141,7 +140,6 @@ PRODUCT_COPY_FILES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/cyttsp4_btn.kl:system/usr/keylayout/cyttsp4_btn.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 # Keystore
