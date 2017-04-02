@@ -104,6 +104,10 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     memtrack.msm8952
 
+# Doze
+PRODUCT_PACKAGES += \
+   OneTeamDoze
+
 # Init scripts
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -123,15 +127,17 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8952
+    gps.msm8952 \
+    libgnsspps \
+    libcurl
 
 # Gps Configurations
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/gps/flp.conf:system/etc/flp.conf \
-    $(DEVICE_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(DEVICE_PATH)/gps/izat.conf:system/etc/izat.conf \
-    $(DEVICE_PATH)/gps/lowi.conf:system/etc/lowi.conf \
-    $(DEVICE_PATH)/gps/sap.conf:system/etc/sap.conf
+    $(DEVICE_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
+    $(DEVICE_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
+    $(DEVICE_PATH)/gps/etc/izat.conf:system/etc/izat.conf \
+    $(DEVICE_PATH)/gps/etc/lowi.conf:system/etc/lowi.conf \
+    $(DEVICE_PATH)/gps/etc/sap.conf:system/etc/sap.conf
 
 # Keylayout
 PRODUCT_COPY_FILES += \
