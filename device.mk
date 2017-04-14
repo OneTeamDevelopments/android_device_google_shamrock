@@ -114,8 +114,8 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.bt.sh \
+    init.qcom.power.rc \
     init.qcom.usb.rc \
-    init.qcom.post_boot.rc \
     ueventd.qcom.rc
 
 # IPv6
