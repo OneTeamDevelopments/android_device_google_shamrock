@@ -54,12 +54,8 @@ lib/libdivxdrmdecrypt.so
 # GPS
 bin/gpsone_daemon
 bin/loc_launcher
-lib/hw/gps.default.so
-lib/libgps.uils.so
 lib/libloc_api_v02.so
-lib/libloc_core.so
 lib/libloc_ds_api.so
-lib/libloc_eng.so
 
 # Media
 lib/libqomx_core.so
