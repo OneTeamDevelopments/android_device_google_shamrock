@@ -182,11 +182,7 @@ PRODUCT_PACKAGES += \
 # Radio
 PRODUCT_PACKAGES += \
     librmnetctl \
-    libxml2 \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+    libxml2 
 
 # Radio Configurations
 PRODUCT_COPY_FILES += \
