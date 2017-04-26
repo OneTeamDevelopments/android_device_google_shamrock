@@ -66,25 +66,54 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    audio.primary.default \
+    audio.primary.msm8952 \
     audio.r_submix.default \
     audio.usb.default \
     audiod \
+    libaudio-resampler \
+    libaudioroute \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libtinycompress \
     tinymix
 
-# Audio Configurations
+# Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
-    $(DEVICE_PATH)/audio/audio_output_policy.conf:system/etc/audio_output_policy.conf \
-    $(DEVICE_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    $(DEVICE_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(DEVICE_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(DEVICE_PATH)/audio/mixer_paths_l9300.xml:system/etc/mixer_paths_l9300.xml \
-    $(DEVICE_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    $(DEVICE_PATH)/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml
+    $(LOCAL_PATH)/configs/mixer_paths_l9300.xml:system/etc/mixer_paths.xml \
+
+# Audio Configurations (CAF)
+PRODUCT_COPY_FILES += \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/audio_platform_info_extcodec.xml:system/etc/audio_platform_info_extcodec.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_wcd9306.xml:system/etc/mixer_paths_wcd9306.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_wcd9326.xml:system/etc/mixer_paths_wcd9326.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_wcd9330.xml:system/etc/mixer_paths_wcd9330.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_wcd9335.xml:system/etc/mixer_paths_wcd9335.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_skuk.xml:system/etc/mixer_paths_skuk.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_qrd_skum.xml:system/etc/mixer_paths_qrd_skum.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_qrd_skun.xml:system/etc/mixer_paths_qrd_skun.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_qrd_skun_cajon.xml:system/etc/mixer_paths_qrd_skun_cajon.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/mixer_paths_msm8952_polaris.xml:system/etc/mixer_paths_msm8952_polaris.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/sound_trigger_mixer_paths_wcd9306.xml:system/etc/sound_trigger_mixer_paths_wcd9306.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/sound_trigger_mixer_paths_wcd9330.xml:system/etc/sound_trigger_mixer_paths_wcd9330.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_32/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_64/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+
+# Audio Configurations (LineageOS)
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:system/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml
 
 # Camera
 PRODUCT_PACKAGES += \
