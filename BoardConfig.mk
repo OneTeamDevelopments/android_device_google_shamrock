@@ -133,6 +133,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 # RIL
 TARGET_RIL_VARIANT := caf
 
+# Sensor
+USE_SENSOR_MULTI_HAL := true
+
 # Sepolicy
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 include device/qcom/sepolicy/sepolicy.mk
