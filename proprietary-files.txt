@@ -21,7 +21,6 @@ etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Handset_cal.acdb
 etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Hdmi_cal.acdb
 etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Headset_cal.acdb
 etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Speaker_cal.acdb
-lib/hw/audio.primary.msm8952.so
 
 # Bluetooth
 bin/btnvtool
@@ -35,6 +34,9 @@ lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
 
+# CNE
+lib/libNimsWrap.so
+
 # CPP Firmware
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
@@ -47,6 +49,9 @@ etc/firmware/cpp_firmware_v1_10_0.fw
 
 # DRM
 bin/qseecomd
+
+# Display
+pp_calib_data_goworld_1080p_video_mode_dsi_panel.xml
 
 # Encryption
 lib/libdivxdrmdecrypt.so
@@ -65,15 +70,6 @@ bin/msm_irqbalance
 bin/pm-proxy
 bin/pm-service
 
-# Permissions
-etc/permissions/cneapiclient.xml
-etc/permissions/com.qti.location.sdk.xml
-etc/permissions/com.qualcomm.location.xml
-etc/permissions/com.quicinc.cne.xml
-etc/permissions/ConnectivityExt.xml
-etc/permissions/qcnvitems.xml
-etc/permissions/qcrilhook.xml
-
 # Qualcomm Framework
 bin/irsc_util
 
@@ -91,7 +87,6 @@ etc/firmware/goodix_config.cfg
 etc/firmware/goodix_firmware.bin
 etc/sensors/hals.conf
 etc/sensors/sensor_def_qcomdev.conf
-lib/hw/sensors.msm8952.so
 
 # Signed Venus (media) firmware
 etc/firmware/venus.b00
@@ -111,6 +106,7 @@ etc/firmware/venus-v1.mdt
 
 # Time Services
 bin/time_daemon
+lib/libtime_genoff.so
 
 # Wlan
 etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
@@ -120,5 +116,3 @@ etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
 # Other
 etc/firmware/DE.o.msm8952
 etc/firmware/DE.o.msm8976
-lib/libdivxdrmdecrypt.so
-lib/libNimsWrap.so
