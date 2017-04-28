@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/google/shamrock
+LOCAL_PATH := device/google/shamrock
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
@@ -22,7 +22,7 @@ $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk
 $(call inherit-product-if-exists, vendor/google/shamrock/shamrock-vendor.mk)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level-0.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version-1_0_3.xml \
-    $(DEVICE_PATH)/configs/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
+    $(LOCAL_PATH)/configs/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -157,11 +157,11 @@ PRODUCT_PACKAGES += \
 
 # Gps Configurations
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
-    $(DEVICE_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
-    $(DEVICE_PATH)/gps/etc/izat.conf:system/etc/izat.conf \
-    $(DEVICE_PATH)/gps/etc/lowi.conf:system/etc/lowi.conf \
-    $(DEVICE_PATH)/gps/etc/sap.conf:system/etc/sap.conf
+    $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
+    $(LOCAL_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/gps/etc/izat.conf:system/etc/izat.conf \
+    $(LOCAL_PATH)/gps/etc/lowi.conf:system/etc/lowi.conf \
+    $(LOCAL_PATH)/gps/etc/sap.conf:system/etc/sap.conf
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -196,9 +196,9 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(DEVICE_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(DEVICE_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Power HAL
 PRODUCT_PACKAGES += \
@@ -215,9 +215,9 @@ PRODUCT_PACKAGES += \
 
 # Radio Configurations
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/data/dsi_config.xml:system/etc/data/dsi_config.xml \
-    $(DEVICE_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
-    $(DEVICE_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
+    $(LOCAL_PATH)/configs/data/dsi_config.xml:system/etc/data/dsi_config.xml \
+    $(LOCAL_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
+    $(LOCAL_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -230,7 +230,7 @@ PRODUCT_COPY_FILES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
 # Wlan
 PRODUCT_PACKAGES += \
@@ -243,10 +243,10 @@ PRODUCT_PACKAGES += \
 
 # Wlan Configurations
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/sec_config:system/etc/sec_config \
-    $(DEVICE_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
-    $(DEVICE_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-    $(DEVICE_PATH)/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny \
-    $(DEVICE_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(DEVICE_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(DEVICE_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config \
+    $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    $(LOCAL_PATH)/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini

@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PATH := device/google/shamrock
+LOCAL_PATH := device/google/shamrock
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8952
@@ -41,7 +41,7 @@ USE_XML_AUDIO_POLICY_CONF := 1
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
 BOARD_CAMERA_SENSORS := imx220 imx230 ov8858_q8v19w_spirit
@@ -129,7 +129,7 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # Recovery
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # RIL
 TARGET_RIL_VARIANT := caf
@@ -138,7 +138,7 @@ TARGET_RIL_VARIANT := caf
 USE_SENSOR_MULTI_HAL := true
 
 # Sepolicy
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 include device/qcom/sepolicy/sepolicy.mk
 
 # Vendor Symlink
