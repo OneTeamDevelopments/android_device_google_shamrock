@@ -52,8 +52,9 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Charger
-WITH_CM_CHARGER := false
+OARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Cryption
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
