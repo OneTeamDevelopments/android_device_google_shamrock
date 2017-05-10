@@ -34,6 +34,6 @@ TARGET_VENDOR_PRODUCT_NAME := Shamrock
 TARGET_VENDOR_DEVICE_NAME := shamrock
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=qcom/shamrock/shamrock:7.1.1/NNH03/3875314:user/release-keys \
-    PRIVATE_BUILD_DESC="shamrock-user 7.1.1 NNH03 3875314 release-keys"
+    BUILD_FINGERPRINT=qcom/shamrock/shamrock:7.1.1/NNH26/3945561:user/release-keys \
+    PRIVATE_BUILD_DESC="shamrock-user 7.1.1 NNH26 3945561 release-keys"
 
