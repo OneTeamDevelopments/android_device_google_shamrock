@@ -106,6 +106,9 @@ TARGET_KERNEL_SOURCE := kernel/google/shamrock
 TARGET_KERNEL_CONFIG := lineageos_shamrock_defconfig
 TARGET_KERNEL_ARCH := arm
 
+# Keymaster
+TARGET_PROVIDES_KEYMASTER := true
+
 # Media
 TARGET_HAVE_SIGNED_VENUS_FW := true
 

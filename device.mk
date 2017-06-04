@@ -81,7 +81,7 @@ PRODUCT_PACKAGES += \
 
 # Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mixer_paths_l9300.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/configs/mixer_paths_l9300.xml:system/etc/mixer_paths.xml
 
 # Audio Configurations (CAF)
 PRODUCT_COPY_FILES += \
@@ -105,7 +105,7 @@ PRODUCT_COPY_FILES += \
     hardware/qcom/audio-caf/msm8952/configs/msm8952_32/sound_trigger_mixer_paths_wcd9306.xml:system/etc/sound_trigger_mixer_paths_wcd9306.xml \
     hardware/qcom/audio-caf/msm8952/configs/msm8952_32/sound_trigger_mixer_paths_wcd9330.xml:system/etc/sound_trigger_mixer_paths_wcd9330.xml \
     hardware/qcom/audio-caf/msm8952/configs/msm8952_32/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-    hardware/qcom/audio-caf/msm8952/configs/msm8952_64/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+    hardware/qcom/audio-caf/msm8952/configs/msm8952_64/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
 
 # Audio Configurations (LineageOS)
 PRODUCT_COPY_FILES += \
@@ -170,12 +170,6 @@ PRODUCT_PACKAGES += \
 # Keylayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
-
-# Keystore
-ifneq ($(TARGET_PROVIDES_KEYMASTER),true)
-PRODUCT_PACKAGES += \
-    keystore.msm8952
-endif
 
 # Lights
 PRODUCT_PACKAGES += \
