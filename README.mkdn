@@ -1,8 +1,8 @@
 Copyright (C) 2017 The LineageOS Project
 
-Android One Third Generation (Shamrock) Device Tree
+Device Tree for Android One Third Generation (shamrock)
 ============================================================
-Basic   | Spesification List
+Basic   | Specifications
 -------:|:-------------------------
 CPU     | Quad-core 1.5 GHz ARM® Cortex™ A53 and quad-core 1.2 GHz ARM® Cortex™ A53
 CHIPSET | Qualcomm MSM8952 Snapdragon 617
