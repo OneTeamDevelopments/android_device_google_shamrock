@@ -49,7 +49,6 @@ ro.sys.fw.use_trim_settings=true
 # Bluetooth
 bluetooth.hfp.client=1
 qcom.bluetooth.soc=smd
-ro.qualcomm.bt.hci_transport=smd 
 
 # Camera
 persist.camera.HAL3.enabled=0
