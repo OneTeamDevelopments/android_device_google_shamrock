@@ -4,7 +4,6 @@
 
 /dev/block/bootdevice/by-name/system         /system      ext4    ro,barrier=1,discard                                        wait
 /dev/block/bootdevice/by-name/oem            /oem         ext4    ro,context=u:object_r:oemfs:s0,nosuid,nodev                 wait
-/dev/block/bootdevice/by-name/vendor         /vendor      ext4    ro,barrier=1,discard                                        wait
 /dev/block/bootdevice/by-name/userdata       /data        ext4    noatime,nosuid,nodev,barrier=1,noauto_da_alloc              wait,check,formattable,encryptable=footer,length=-16384
 /dev/block/bootdevice/by-name/userdata       /data        f2fs    nosuid,nodev,noatime,inline_xattr                           wait,check,formattable,encryptable=footer,length=-16384
 /dev/block/bootdevice/by-name/cache          /cache       ext4    noatime,nosuid,nodev,barrier=1                              wait,check,formattable
