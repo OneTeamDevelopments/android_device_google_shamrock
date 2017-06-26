@@ -9,13 +9,13 @@ audio.offload.disable=1
 audio.offload.gapless.enabled=true
 audio.offload.min.duration.secs=30
 audio.offload.multiple.enabled=false
-audio.offload.pcm.16bit.enable=false
-audio.offload.pcm.24bit.enable=false
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
 audio.offload.track.enable=false
 audio.offload.video=false
 audio.playback.mch.downsample=true
 audio.safx.pbe.enabled=true
-ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.fluencetype=fluence
 ro.qc.sdk.audio.ssr=false
 tunnel.audio.encode=false
 vidc.enc.narrow.searchrange=1
@@ -33,8 +33,8 @@ persist.audio.calfile4=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Hd
 persist.audio.calfile5=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Headset_cal.acdb
 persist.audio.calfile6=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Speaker_cal.acdb
 
-persist.audio.dirac.speaker=true
-persist.audio.fluence.audiorec=false
+persist.audio.dirac.speaker=false
+persist.audio.fluence.audiorec=true
 persist.audio.fluence.speaker=true
 persist.audio.fluence.spk.mono=true
 persist.audio.fluence.voicecall=true
@@ -51,8 +51,8 @@ bluetooth.hfp.client=1
 qcom.bluetooth.soc=smd
 
 # Camera
-persist.camera.HAL3.enabled=0
-persist.camera.hal.debug.mask=0
+persist.camera.HAL3.enabled=1
+persist.camera.hal.debug.mask=1
 persist.camera.cpp.duplication=false
 
 # CNE
