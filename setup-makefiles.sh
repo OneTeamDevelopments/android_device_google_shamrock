@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Copyright (C)2017 The LineageOS Project
+# Copyright (C) 2016 The CyanogenMod Project
+#           (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,8 +20,6 @@ set -e
 export DEVICE=shamrock
 export VENDOR=google
 
-export DEVICE_BRINGUP_YEAR=2016
-
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
@@ -34,30 +33,28 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
-if [ $# -eq 0 ]; then
-  SRC=adb
-else
-  if [ $# -eq 1 ]; then
-    SRC=$1
-  else
-    echo "$0: bad number of arguments"
-    echo ""
-    echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
-    echo ""
-    echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
-    echo "the device using adb pull."
-    exit 1
-  fi
-fi
+# Initialize the helper for common
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" "true"
 
-# Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" true
-extract "$MY_DIR"/proprietary-files.txt "$SRC"
+# Copyright headers and guards
+write_headers "athene"
+
+# The standard common blobs
+write_makefiles "$MY_DIR"/proprietary-files.txt
+
+# We are done!
+write_footers
 
 if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
     # Reinitialize the helper for device
     setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
-    extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC"
-fi
 
-"$MY_DIR"/setup-makefiles.sh
+    # Copyright headers and guards
+    write_headers
+
+    # The standard device blobs
+    write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files.txt
+
+    # We are done!
+    write_footers
+fi
