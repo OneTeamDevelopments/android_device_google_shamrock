@@ -90,7 +90,6 @@ USE_DEVICE_SPECIFIC_GPS := true
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-TARGET_UNIFIED_DEVICE := true
 TARGET_USES_OVERLAY := true
 
 # Kernel
