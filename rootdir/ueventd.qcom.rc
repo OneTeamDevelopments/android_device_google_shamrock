@@ -254,3 +254,37 @@
 
 # Add device block for FRP
 /dev/block/platform/soc.0/7824900.sdhci/by-name/frp       0660   system     system
+
+# DTV devices
+/dev/i2c-2                0660   media      media
+/dev/shdtvspi             0660   media      media
+/dev/tunctrl              0660   media      media
+
+# permissions for ir2e71y
+/dev/ir2e71y              0660   system     system
+
+# proximity driver
+/dev/proximity_dev        0660   system     system
+
+# sensor_hub driver
+/dev/shub_io_acc          0660   system     system
+/dev/shub_io_gamerot      0660   system     system
+/dev/shub_io_georv        0660   system     system
+/dev/shub_io_grav         0660   system     system
+/dev/shub_io_gyro         0660   system     system
+/dev/shub_io_gyrounc      0660   system     system
+/dev/shub_io_linearacc    0660   system     system
+/dev/shub_io_mag          0660   system     system
+/dev/shub_io_magunc       0660   system     system
+/dev/shub_io_mcu          0660   system     system
+/dev/shub_io_ori          0660   system     system
+/dev/shub_io_pedo         0660   system     system
+/dev/shub_io_pedodet      0660   system     system
+/dev/shub_io_rvect        0660   system     system
+/dev/shub_io_significant  0660   system     system
+/dev/shub_io_diag         0660   system     system
+
+# nfc
+/dev/nfc_gpio_drv         0660   nfc        nfc
+/dev/nfc_i2c_drv          0660   nfc        nfc
+/dev/snfc_en              0600   nfc        nfc

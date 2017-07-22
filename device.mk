@@ -140,10 +140,13 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.sh \
-    init.qcom.bt.sh \
-    init.qcom.power.rc \
     init.qcom.usb.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.class_main.sh \
+    init.qcom.bms.sh \
+    init.qcom.bt.sh \
+    init.qcom.class_core.sh \
+    init.qcom.post_boot.sh
 
 # IPv6
 PRODUCT_PACKAGES += \
