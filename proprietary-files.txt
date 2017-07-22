@@ -84,6 +84,7 @@ vendor/lib/libmm-dspp-utils.so
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmm-qdcm-diag.so
 vendor/lib/libmm-qdcm.so
+vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libmmqjpegdma.so
 vendor/lib/libmmcamera2_c2d_module.so
