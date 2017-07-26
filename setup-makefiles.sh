@@ -45,10 +45,6 @@ write_headers
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
 
-cat << EOF >> "$ANDROIDMK"
-
-EOF
-
 # We are done!
 write_footers
 
