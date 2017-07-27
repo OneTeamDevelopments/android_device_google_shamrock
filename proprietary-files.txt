@@ -713,8 +713,12 @@ vendor/lib/hw/gatekeeper.msm8952.so
 # GPS
 bin/gpsone_daemon
 bin/loc_launcher
+lib/hw/gps.default.so
+lib/libgps.utils.so
 lib/libloc_api_v02.so
+lib/libloc_core.so
 lib/libloc_ds_api.so
+lib/libloc_eng.so
 vendor/bin/qti
 vendor/bin/slim_daemon
 vendor/bin/xtwifi-client
