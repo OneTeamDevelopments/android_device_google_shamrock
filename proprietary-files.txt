@@ -60,6 +60,7 @@ vendor/lib/soundfx/libqcvirt.so
 # Bluetooth
 bin/btnvtool
 bin/hci_qcomm_init
+vendor/lib/libbt-vendor.so
 
 # Camera
 bin/mm-qcamera-daemon
@@ -668,6 +669,7 @@ vendor/lib/libtzdrmgenprov.so
 vendor/lib/libqti-at.so
 vendor/lib/libQtiTether.so
 vendor/lib/drm/libdrmprplugin.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libprmediadrmdecrypt.so
 vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
