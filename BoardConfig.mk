@@ -66,23 +66,24 @@ BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
-TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-TARGET_USES_NON_TREBLE_CAMERA := true
-TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+TARGET_USES_QTI_CAMERA_DEVICE := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
-# Cryption
-TARGET_KEYMASTER_WAIT_FOR_QSEE := true
-TARGET_HW_DISK_ENCRYPTION := true
-
 # Dexpreopt
-WITH_DEXPREOPT := true
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -104,15 +105,8 @@ ENABLE_SCHED_BOOST := true
 
 # GPS
 TARGET_NO_RPC := true
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 USE_DEVICE_SPECIFIC_GPS := true
-
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
-    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
-    /system/vendor/lib/libril-qc-qmi-1.so|rild_socket.so \
-    /system/lib/libandroid.so|libshim_ril.so \
-    /system/lib/libjustshoot.so|libshims_camera.so
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
@@ -120,9 +114,8 @@ TARGET_USES_OVERLAY := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk 
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
@@ -130,8 +123,11 @@ TARGET_KERNEL_SOURCE := kernel/google/shamrock
 TARGET_KERNEL_CONFIG := Fusion_shamrock_defconfig
 TARGET_KERNEL_ARCH := arm
 
-# Keymaster
-TARGET_PROVIDES_KEYMASTER := true
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
+
+# Media
+TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Media
 TARGET_HAVE_SIGNED_VENUS_FW := true
@@ -156,16 +152,13 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 28538268672
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
 TARGET_POWERHAL_VARIANT := qcom
+TARGET_USE_SDCLANG := true
 
 # Recovery
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 
 # RIL
 TARGET_RIL_VARIANT := caf
-
-# Sensor
-USE_SENSOR_MULTI_HAL := true
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
@@ -182,3 +175,7 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+# HIDL
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+DEVICE_MATRIX_FILE   := $(LOCAL_PATH)/compatibility_matrix.xml

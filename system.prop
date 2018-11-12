@@ -1,5 +1,5 @@
-# 
-#  System prop for Gm 5 Plus # One-Teams.Com
+#
+#  System prop for Gm 5 Plus # One-Team
 #
 # Audio
 audio.deep_buffer.media=true
@@ -24,14 +24,6 @@ voice.playback.conc.disabled=true
 voice.record.conc.disabled=false
 voice.voip.conc.disabled=true
 use.voice.path.for.pcm.voip=true
-
-persist.audio.calfile0=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Bluetooth_cal.acdb
-persist.audio.calfile1=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_General_cal.acdb
-persist.audio.calfile2=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Global_cal.acdb
-persist.audio.calfile3=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Handset_cal.acdb
-persist.audio.calfile4=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Hdmi_cal.acdb
-persist.audio.calfile5=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Headset_cal.acdb
-persist.audio.calfile6=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Speaker_cal.acdb
 
 persist.audio.dirac.speaker=true
 persist.audio.vendor.fluence.audiorec=false
