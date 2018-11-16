@@ -89,6 +89,11 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     tinymix
 
+# Healthd
+PRODUCT_PACKAGES += \
+		android.hardware.health@2.0-service \
+		chargeonlymode
+
 # Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
