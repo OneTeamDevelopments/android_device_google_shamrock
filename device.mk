@@ -16,9 +16,8 @@
 
 LOCAL_PATH := device/google/shamrock
 
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
-
 $(call inherit-product-if-exists, vendor/google/shamrock/shamrock-vendor.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
@@ -41,7 +40,7 @@ PRODUCT_COPY_FILES += \
 		frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
 		frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
 		frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
-		frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+		frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
 		frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml \
 		frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
 		frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
@@ -92,15 +91,15 @@ PRODUCT_PACKAGES += \
 
 # Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mixer_paths.xml:system/vendor/etc/mixer_paths.xml \
-		$(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-		$(LOCAL_PATH)/configs/audio_policy.conf:system/vendor/etc/audio_policy.conf \
-		$(LOCAL_PATH)/configs/audio_policy_configuration.xml:system/vendor/etc/audio_policy_configuration.xml \
-		$(LOCAL_PATH)/configs/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
-		$(LOCAL_PATH)/configs/audio_platform_info.xml:system/vendor/etc/audio_platform_info.xml \
-		$(LOCAL_PATH)/configs/sound_trigger_mixer_paths.xml:system/vendor/etc/sound_trigger_mixer_paths.xml \
-		$(LOCAL_PATH)/configs/sound_trigger_platform_info.xml:system/vendor/etc/sound_trigger_platform_info.xml \
-		$(LOCAL_PATH)/configs/aanc_tuning_mixer.txt:system/vendor/etc/aanc_tuning_mixer.txt
+    $(LOCAL_PATH)/configs/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+		$(LOCAL_PATH)/configs/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
+		$(LOCAL_PATH)/configs/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
+		$(LOCAL_PATH)/configs/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+		$(LOCAL_PATH)/configs/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+		$(LOCAL_PATH)/configs/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+		$(LOCAL_PATH)/configs/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+		$(LOCAL_PATH)/configs/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
+		$(LOCAL_PATH)/configs/aanc_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/aanc_tuning_mixer.txt
 
 # Audio Configurations (LineageOS)
 PRODUCT_COPY_FILES += \
@@ -112,8 +111,8 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-		camera.device@3.2-impl \
 		android.hardware.camera.provider@2.4-impl \
+		android.hardware.camera.provider@2.4-service \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0_vendor \
     libmm-qcamera \
@@ -165,10 +164,6 @@ PRODUCT_PACKAGES += \
 		android.hardware.gatekeeper@1.0-impl \
 		android.hardware.gatekeeper@1.0-service
 
-# Doze
-PRODUCT_PACKAGES += \
-   	OneTeamDoze
-
 # IPA Manager
 PRODUCT_PACKAGES += \
 		ipacm \
@@ -180,6 +175,7 @@ PRODUCT_PACKAGES += \
 		init.qcom.rc \
 		init.qcom.sh \
 		init.qcom.usb.rc \
+		init.target.rc \
 		ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
@@ -208,12 +204,12 @@ PRODUCT_PACKAGES += \
 
 # Gps Configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/flp.conf:system/vendor/etc/flp.conf \
-    $(LOCAL_PATH)/gps/gps.conf:system/vendor/etc/gps.conf \
-    $(LOCAL_PATH)/gps/izat.conf:system/vendor/etc/izat.conf \
-    $(LOCAL_PATH)/gps/lowi.conf:system/vendor/etc/lowi.conf \
-    $(LOCAL_PATH)/gps/sap.conf:system/vendor/etc/sap.conf \
-		$(LOCAL_PATH)/gps/xtwifi.conf:system/vendor/etc/xtwifi.conf
+    $(LOCAL_PATH)/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
+    $(LOCAL_PATH)/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
+    $(LOCAL_PATH)/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
+    $(LOCAL_PATH)/gps/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
+    $(LOCAL_PATH)/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
+		$(LOCAL_PATH)/gps/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
@@ -239,6 +235,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Jelly
 
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml \
+		$(LOCAL_PATH)/compatibility_matrix.xml:system/compatibility_matrix.xml
+
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
@@ -254,10 +256,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
 		android.hardware.keymaster@3.0-service
-
-# USB HAL
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
 
 # LiveDisplay native
 RODUCT_PACKAGES += \
@@ -292,7 +290,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/configs/media_profiles_V1_0.xml:system/etc/media_profiles_V1_0.xml
 
 # Netutils
 PRODUCT_PACKAGES += \
@@ -349,12 +347,12 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
 		android.hardware.sensors@1.0-impl \
-    sensors.msm8952
+		android.hardware.sensors@1.0-service
 
 # Sensor Configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sensors/hals.conf:system/vendor/etc/sensors/hals.conf \
-    $(LOCAL_PATH)/sensors/sensor_def_qcomdev.conf:system/vendor/etc/sensors/sensor_def_qcomdev.conf
+    $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
+    $(LOCAL_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf
 
 # VNDK-SP:
 PRODUCT_PACKAGES += \
@@ -363,6 +361,7 @@ PRODUCT_PACKAGES += \
 # Wlan
 PRODUCT_PACKAGES += \
 		android.hardware.wifi@1.0-service \
+		libcld80211 \
     wcnss_service \
 		libqsap_sdk \
 		libQWiFiSoftApCfg \
@@ -374,11 +373,16 @@ PRODUCT_PACKAGES += \
 		dhcpcd.conf \
     wpa_supplicant.conf
 
+# ANT
+PRODUCT_PACKAGES += \
+		AntHalService \
+		com.dsi.ant.antradio_library
+
 # Wlan Configurations
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/vendor/etc/wifi/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 PRODUCT_PACKAGES += \
 		android.hidl.base@1.0 \
@@ -390,6 +394,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 		persist.service.adb.enable=1 \
 		persist.service.debuggable=1 \
-		persist.sys.usb.config=mtp,adb \
+		persist.sys.usb.config=adb \
 		ro.secure=0 \
 		ro.adb.secure=0

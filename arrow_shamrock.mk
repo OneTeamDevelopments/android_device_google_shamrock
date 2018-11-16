@@ -12,15 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/google/shamrock/full_shamrock.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit from shamrock device
+$(call inherit-product, device/google/shamrock/device.mk)
+
+# Inherit some common Arrow stuff.
+$(call inherit-product, vendor/arrow/config/common.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8952
 
-PRODUCT_NAME := lineage_shamrock
+PRODUCT_NAME := arrow_shamrock
 BOARD_VENDOR := google
 PRODUCT_DEVICE := shamrock
 
