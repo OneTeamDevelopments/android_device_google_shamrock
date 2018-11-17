@@ -26,7 +26,10 @@
 #
 
 import /vendor/etc/init/hw/init.qcom.usb.rc
+import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.target.rc
+import /vendor/etc/init/hw/init.qcom.factory.rc
+import /vendor/etc/init/hw/init.qcom.test.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -126,7 +129,7 @@ on boot
 
     #enable camera read sensors data
     setprop persist.camera.gyro.disable 0
-    #enable camera pdaf focus box close
+    #enable camera pdaf focus box close 
     setprop persist.camera.stats.test 5
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
@@ -911,11 +914,6 @@ service qcom-sh /vendor/bin/init.qcom.sh
 
 service sensor-sh /vendor/bin/init.qcom.sensors.sh
     class core
-    user root
-    oneshot
-
-service crashdata-sh /vendor/bin/init.qcom.crashdata.sh
-    class late_start
     user root
     oneshot
 
