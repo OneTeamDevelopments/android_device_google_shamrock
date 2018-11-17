@@ -158,7 +158,7 @@ TARGET_POWERHAL_VARIANT := qcom
 TARGET_USE_SDCLANG := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 
 # RIL
 TARGET_RIL_VARIANT := caf
