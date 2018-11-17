@@ -179,8 +179,13 @@ PRODUCT_PACKAGES += \
 		ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
-		init.qcom.bt.sh \
-		init.qcom.post_boot.sh
+		init.class_main.sh \
+		init.crda.sh \
+		init.qcom.class_core.sh \
+		init.qcom.early_boot.sh \
+		init.qcom.post_boot.sh \
+		init.qcom.sdio.sh \
+		init.qcom.sensors.sh
 
 # IPv6
 PRODUCT_PACKAGES += \
