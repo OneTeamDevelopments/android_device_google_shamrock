@@ -261,6 +261,10 @@ PRODUCT_PACKAGES += \
 RODUCT_PACKAGES += \
 		vendor.lineage.livedisplay@1.0-service-sdm
 
+# IMS
+PRODUCT_PACKAGES += \
+    qti-telephony-common
+
 # Lights
 PRODUCT_PACKAGES += \
 		android.hardware.light@2.0-impl \
