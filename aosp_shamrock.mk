@@ -24,6 +24,9 @@ $(call inherit-product, vendor/aosp/common.mk)
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8952
 
+# Boot animation res
+TARGET_BOOT_ANIMATION_RES := 1080
+
 PRODUCT_NAME := aosp_shamrock
 BOARD_VENDOR := google
 PRODUCT_DEVICE := shamrock
@@ -36,3 +39,7 @@ PRODUCT_BRAND := Google
 TARGET_VENDOR := google
 TARGET_VENDOR_PRODUCT_NAME := Shamrock
 TARGET_VENDOR_DEVICE_NAME := shamrock
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_FINGERPRINT=gm/shamrock/shamrock:8.0.0/OSR18H/315:user/release-keys \
+    PRIVATE_BUILD_DESC="shamrock-user 8.0.0 OSR18H 315 release-keys"
