@@ -24,6 +24,9 @@ $(call inherit-product, vendor/aosp/common.mk)
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8952
 
+# Boot animation res
+TARGET_BOOT_ANIMATION_RES := 1080
+
 PRODUCT_NAME := aosp_shamrock
 BOARD_VENDOR := google
 PRODUCT_DEVICE := shamrock
