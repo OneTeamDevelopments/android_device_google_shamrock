@@ -17,16 +17,25 @@ LOCAL_PATH := device/google/shamrock
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8952
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno405
 TARGET_BOOTLOADER_BOARD_NAME := MSM8952
 TARGET_NO_BOOTLOADER := true
 
 # Architecture
-TARGET_BOARD_SUFFIX := _32
-TARGET_ARCH := arm
+TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := cortex-a53
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a53
+
+TARGET_BOARD_SUFFIX := _64
+TARGET_USES_64_BIT_BINDER := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
@@ -63,13 +72,13 @@ TARGET_USES_QCOM_MM_AUDIO := true
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
+BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_USES_QTI_CAMERA_DEVICE := true
 
 # Charger
@@ -123,14 +132,17 @@ TARGET_USES_OVERLAY := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
-BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+ENABLE_CPUSETS := true
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/google/shamrock
 TARGET_KERNEL_CONFIG := OneX_shamrock_defconfig
-TARGET_KERNEL_ARCH := arm
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-androidkernel-
 
 # HWUI
 HWUI_COMPILE_FOR_PERF := true
