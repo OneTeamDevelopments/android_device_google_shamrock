@@ -69,6 +69,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
+# Shims
+PRODUCT_PACKAGES += \
+    libshims_gnss
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -367,6 +371,10 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     libwifi-hal-qcom \
     wpa_supplicant.conf
+
+#RIL
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.0
 
 # ANT
 PRODUCT_PACKAGES += \
