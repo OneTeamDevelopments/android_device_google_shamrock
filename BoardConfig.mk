@@ -66,10 +66,17 @@ AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
-TARGET_USES_QCOM_MM_AUDIO := true
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
+
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /vendor/lib64/liblbs_core.so|libshims_gnss.so
+
+# Bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -85,6 +92,13 @@ TARGET_USES_QTI_CAMERA_DEVICE := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
+
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += \
+    $(LOCAL_PATH)/lineagehw
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
 
 # Dexpreopt
 ifeq ($(HOST_OS),linux)
@@ -122,9 +136,10 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 ENABLE_SCHED_BOOST := true
 
 # GPS
-TARGET_NO_RPC := true
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 USE_DEVICE_SPECIFIC_GPS := true
+USE_DEVICE_SPECIFIC_LOC_API := true
+TARGET_NO_RPC := true
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
@@ -144,14 +159,18 @@ TARGET_KERNEL_SOURCE := kernel/google/shamrock
 TARGET_KERNEL_CONFIG := OneX_shamrock_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-androidkernel-
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+
+# HIDL
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+DEVICE_MATRIX_FILE   := $(LOCAL_PATH)/compatibility_matrix.xml
+
 # HWUI
 HWUI_COMPILE_FOR_PERF := true
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
-
-# Media
-TARGET_HAVE_SIGNED_VENUS_FW := true
 
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
@@ -171,9 +190,9 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 28538268672
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_QC_TIME_SERVICES := true
 TARGET_POWERHAL_VARIANT := qcom
 TARGET_USE_SDCLANG := true
+TARGET_HAS_NO_WLAN_STATS := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab

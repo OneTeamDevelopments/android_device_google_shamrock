@@ -86,7 +86,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-	<!--
     <hal format="hidl">
         <name>android.hardware.gnss</name>
         <transport>hwbinder</transport>
@@ -97,7 +96,6 @@
             <instance>gnss_vendor</instance>
         </interface>
     </hal>
-	-->
     <hal format="hidl">
         <name>android.hardware.graphics.allocator</name>
         <transport>hwbinder</transport>
@@ -488,16 +486,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-	<!--
-    <hal format="hidl">
-        <name>vendor.qti.gnss</name>
-        <transport>hwbinder</transport>
-        <version>1.2</version>
-        <interface>
-            <name>ILocHidlGnss</name>
-            <instance>gnss_vendor</instance>
-        </interface>
-    </hal>
     <hal format="hidl">
         <name>vendor.qti.gnss</name>
         <transport>hwbinder</transport>
@@ -507,7 +495,6 @@
             <instance>gnss_vendor</instance>
         </interface>
     </hal>
-	-->
     <hal format="hidl">
         <name>vendor.qti.hardware.alarm</name>
         <transport>hwbinder</transport>
