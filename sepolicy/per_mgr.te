@@ -1,1 +1,2 @@
-allow per_mgr self:capability net_raw;
+# files in /sys
+r_dir_file(vendor_per_mgr, sysfs_msm_subsys)

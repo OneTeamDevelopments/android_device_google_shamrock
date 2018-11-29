@@ -1,1 +1,1 @@
-qualcomm.bt.                     u:object_r:bluetooth_prop:s0
+persist.net.doxlat         u:object_r:vendor_xlat_prop:s0

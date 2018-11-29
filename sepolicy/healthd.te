@@ -1,1 +1,1 @@
-allow healthd rtc_device:chr_file rw_file_perms;
+r_dir_file(healthd, sysfs_batteryinfo)

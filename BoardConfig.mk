@@ -213,9 +213,13 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 # RIL
 TARGET_RIL_VARIANT := caf
 
-# Sepolicy
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+# Root
+BOARD_ROOT_EXTRA_FOLDERS := persist
+
+# SELinux
 include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_VERS := 28.0
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
