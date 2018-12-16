@@ -385,6 +385,9 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0_system
 
+# Properties
+-include $(LOCAL_PATH)/vendor_prop.mk
+
 # Debug
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.service.adb.enable=1 \
