@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/arrow_shamrock.mk
+    $(LOCAL_DIR)/aosp_shamrock.mk
