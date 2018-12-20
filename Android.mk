@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifneq ($(filter shamrock, $(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),shamrock)
 
 LOCAL_PATH := $(call my-dir)
 
