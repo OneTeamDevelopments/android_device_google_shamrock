@@ -39,9 +39,7 @@
 using android::base::GetProperty;
 using android::init::property_set;
 
-void vendor_load_properties() {
-    property_set("ro.product.model", "GM 5 Plus");
-	
+void vendor_load_properties() {	
     property_set("dalvik.vm.heapstartsize", "16m");
     property_set("dalvik.vm.heapgrowthlimit", "192m");
     property_set("dalvik.vm.heapsize", "512m");

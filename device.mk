@@ -17,12 +17,13 @@
 LOCAL_PATH := device/google/shamrock
 
 $(call inherit-product-if-exists, vendor/google/shamrock/shamrock-vendor.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
+
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -71,21 +72,18 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
+    android.hardware.audio@4.0-impl \
     android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.broadcastradio@1.0-impl \
-    android.hardware.soundtrigger@2.1-impl \
+    android.hardware.audio.effect@4.0-impl \
+    android.hardware.audio.effect@2.0-service \
     audio.a2dp.default \
     audio.primary.msm8952 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
-    libaudioroute \
-    libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libtinycompress \
+    libqcompostprocbundle \
     tinymix
 
 # Healthd
@@ -126,15 +124,9 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
 	camera.device@3.2-impl \
     libmm-qcamera \
-    Snap
-
-# Disable camera Treble path
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera.disable_treble=true
-
-# Disable Vulkan
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.graphics.vulkan.disable=true
+    Snap \
+    vendor.qti.hardware.camera.device@1.0 \
+    vendor.qti.hardware.camera.device@1.0_vendor
 
 # Display
 PRODUCT_PACKAGES += \
@@ -148,11 +140,12 @@ PRODUCT_PACKAGES += \
     copybit.msm8952 \
     gralloc.msm8952 \
     hwcomposer.msm8952 \
-    libtinyxml \
     memtrack.msm8952 \
     libdisplayconfig \
     liboverlay \
-    libqdMetaData.system
+    libqdMetaData.system \
+    libgenlock \
+    libtinyxml
 
 PRODUCT_PACKAGES += \
     vendor.display.color@1.0-service \
@@ -223,7 +216,7 @@ PRODUCT_PACKAGES += \
     rcs_service_aidl \
     rcs_service_aidl.xml \
     rcs_service_api \
-	 	rcs_service_api.xml
+	rcs_service_api.xml
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -232,7 +225,8 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.1-service.clearkey
 
 # Jelly package
 PRODUCT_PACKAGES += \
@@ -248,14 +242,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
 
-# LiveDisplay native
-RODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm
-
-# IMS
-PRODUCT_PACKAGES += \
-    qti-telephony-common
-
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
@@ -266,7 +252,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libmm-omxcore \
-    libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
@@ -291,14 +276,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-# OEM Blacklist
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
-    ro.product.model
-
 # Power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti \
-    power.msm8952
+    android.hardware.power@1.1-service-qti
 
 # Radio
 PRODUCT_PACKAGES += \
@@ -343,25 +323,19 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vndk-sp
 
-# Wlan
+# Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     libcld80211 \
-    wcnss_service \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-    hostapd \
     libwpa_client \
-    wpa_supplicant \
-    wificond \
-    wifilogd \
+    hostapd \
     dhcpcd.conf \
-    libwifi-hal-qcom \
+    wcnss_service \
+    wificond \
+    wpa_supplicant \
     wpa_supplicant.conf
-
-#RIL
-PRODUCT_PACKAGES += \
-    android.hardware.radio@1.0
 
 # ANT
 PRODUCT_PACKAGES += \
@@ -379,11 +353,13 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_cfg.ini \
 	WCNSS_wlan_dictionary.dat
 
+DEVICE_FRAMEWORK_MANIFEST_FILE += \
+    system/libhidl/vintfdata/manifest_healthd_exclude.xml
+
+# HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.base@1.0_system \
-    android.hidl.manager@1.0 \
-    android.hidl.manager@1.0_system
+    android.hidl.manager@1.0
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk

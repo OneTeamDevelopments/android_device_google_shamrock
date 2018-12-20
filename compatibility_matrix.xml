@@ -31,14 +31,6 @@
             <instance>vr</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.health</name>
-        <version>2.0</version>
-        <interface>
-            <name>IHealth</name>
-            <instance>backup</instance>
-        </interface>
-    </hal>
     <hal format="hidl" optional="false">
         <name>android.hidl.allocator</name>
         <version>1.0</version>
@@ -49,7 +41,7 @@
     </hal>
     <hal format="hidl" optional="false">
         <name>android.hidl.manager</name>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
             <name>IServiceManager</name>
             <instance>default</instance>
@@ -73,7 +65,7 @@
     </hal>
     <hal format="hidl" optional="false">
         <name>android.system.net.netd</name>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
             <name>INetd</name>
             <instance>default</instance>
