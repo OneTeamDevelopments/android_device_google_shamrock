@@ -45,17 +45,4 @@
             android:dialogTitle="@string/spectrum_dialogTitle" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/s2s_title">
-        <ListPreference
-            android:title="@string/s2s_title"
-            android:key="sweep2sleep"
-            android:defaultValue="0"
-            android:entries="@array/s2sArray"
-            android:entryValues="@array/s2sValues" />
-         <com.xiaomi.shit.S2SVibratorStrengthPreference
-            android:key="s2s_vib_strength"
-            android:title="@string/s2s_vib_strength_title_head" />
-    </PreferenceCategory>
-
 </PreferenceScreen>
