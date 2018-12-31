@@ -88,13 +88,13 @@ PRODUCT_PACKAGES += \
 
 # Healthd
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service \
+    android.hardware.health@2.0-service.msm8952 \
     chargeonlymode
 
 # Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
-    $(LOCAL_PATH)/configs/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/configs/mixer_paths_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.xml \
     $(LOCAL_PATH)/configs/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/configs/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
@@ -127,6 +127,13 @@ PRODUCT_PACKAGES += \
     Snap \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0_vendor
+
+#Camera Sounds
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/camsounds/camera_click.ogg:system/product/media/audio/ui/camera_click.ogg \
+    $(LOCAL_PATH)/camsounds/camera_focus.ogg:system/product/media/audio/ui/camera_focus.ogg \
+    $(LOCAL_PATH)/camsounds/VideoStop.ogg:system/product/media/audio/ui/VideoStop.ogg \
+    $(LOCAL_PATH)/camsounds/VideoRecord.ogg:system/product/media/audio/ui/VideoRecord.ogg
 
 # Display
 PRODUCT_PACKAGES += \
@@ -244,9 +251,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
-    lights.msm8952
+    android.hardware.light@2.0-service.shamrock
 
 # Media
 PRODUCT_PACKAGES += \
@@ -298,8 +303,7 @@ PRODUCT_COPY_FILES += \
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    $(LOCAL_PATH)/seccomp_policy/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+    $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -360,6 +364,11 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
+
+# Libshims
+PRODUCT_PACKAGES += \
+    libshims_ims \
+    libshims_rild_socket
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk

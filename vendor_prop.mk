@@ -79,7 +79,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     camera.lowpower.record.enable=1 \
     media.camera.ts.monotonic=1 \
     persist.camera.gyro.disable=0 \
-    persist.camera.HAL3.enabled=1 \
+    persist.camera.HAL3.enabled=0 \
     persist.camera.isp.clock.optmz=0 \
     persist.camera.stats.test=5 \
     persist.vendor.qti.telephony.vt_cam_interface=1 \
@@ -211,11 +211,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     DEVICE_PROVISIONED=1 \
-    persist.data.iwlan.enable=true \
-    persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=0 \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.calls.on.ims=0 \
     persist.radio.csvt.enabled=false \
@@ -229,12 +224,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
     ril.subscription.types=NV,RUIM \
+	rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     rild.libargs=-d/dev/smd0 \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.default_network=22,20 \
-    service.qti.ims.enabled=1 \
     telephony.lteOnCdmaDevice=1
+
+# IMS
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.data.iwlan.enable=true \
+    persist.dbg.ims_volte_enable=1 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=0 \
+    service.qti.ims.enabled=1
 
 # Time Services
 PRODUCT_PROPERTY_OVERRIDES += \

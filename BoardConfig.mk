@@ -37,6 +37,9 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 
+BOARD_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+BOARD_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+
 # Audio
 AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
 AUDIO_FEATURE_ENABLED_ALAC_OFFLOAD := true
@@ -74,16 +77,14 @@ BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
-BOARD_QTI_CAMERA_32BIT_ONLY := true
+TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_USES_NON_TREBLE_CAMERA := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
-
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
 
 # Dexpreopt
 ifeq ($(HOST_OS),linux)
@@ -95,6 +96,11 @@ ifeq ($(HOST_OS),linux)
 endif
 
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
+
+TARGET_LD_SHIM_LIBS := \
+   /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
+   /system/lib64/lib-imsvt.so|libshims_ims.so \
+   /system/vendor/lib64/libril-qc-qmi-1.so|libshims_rild_socket.so
 
 # Display
 BOARD_USES_ADRENO := true
