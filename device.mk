@@ -19,8 +19,8 @@ LOCAL_PATH := device/google/shamrock
 $(call inherit-product-if-exists, vendor/google/shamrock/shamrock-vendor.mk)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
@@ -36,6 +36,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Permissions
 PRODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -88,8 +89,7 @@ PRODUCT_PACKAGES += \
 
 # Healthd
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.msm8952 \
-    chargeonlymode
+    android.hardware.health@2.0-service.msm8952
 
 # Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
@@ -273,23 +273,22 @@ PRODUCT_PACKAGES += \
     libandroid_net \
     netutils-wrapper-1.0
 
-# Telephony
-PRODUCT_PACKAGES += \
-    ims-ext-common \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
 # Power HAL
 PRODUCT_PACKAGES += \
     android.hardware.power@1.1-service-qti
 
-# Radio
+# RIL
 PRODUCT_PACKAGES += \
+    android.hardware.radio.config@1.0 \
+    android.hardware.secure_element@1.0 \
     librmnetctl \
     libcnefeatureconfig \
-    libxml2
+    libxml2 \
+    telephony-ext \
+    ims-ext-common
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -344,7 +343,8 @@ PRODUCT_PACKAGES += \
 # ANT
 PRODUCT_PACKAGES += \
     AntHalService \
-    com.dsi.ant.antradio_library
+    com.dsi.ant.antradio_library \
+    libantradio
 
 # Wlan Configurations
 PRODUCT_COPY_FILES += \
@@ -364,11 +364,6 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
-
-# Libshims
-PRODUCT_PACKAGES += \
-    libshims_ims \
-    libshims_rild_socket
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk

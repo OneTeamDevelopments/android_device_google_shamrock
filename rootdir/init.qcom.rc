@@ -451,6 +451,11 @@ service vendor.rmt_storage /vendor/bin/rmt_storage
 service vendor.tftp_server /vendor/bin/tftp_server
    class core
    user root
+   
+on charger
+    setprop persist.sys.usb.config mass_storage
+    load_system_props
+    start qcom-post-boot
 
 service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
@@ -556,10 +561,10 @@ service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio sdcard_r sdcard_rw diag log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service charger /sbin/chargeonlymode
+service charger /charger
     class charger
     group system graphics
-    seclabel u:r:charger:s0
+    seclabel u:r:healthd:s0
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     class core
@@ -567,14 +572,24 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
     group root
     disabled
 
-on charger
-    setprop persist.sys.usb.config mass_storage
-    load_system_props
-    start qcom-post-boot
-
 on property:init.svc.surfaceflinger=restarting
     stop vendor.hwcomposer-2-1
     start vendor.hwcomposer-2-1
+	
+service charger_monitor /system/bin/charger_monitor
+    user root
+    group root
+    disabled
+
+service qbcharger /charger -m 1
+    disabled
+    oneshot
+
+on property:sys.qbcharger.enable=true
+    start qbcharger
+
+on property:sys.qbcharger.enable=false
+    stop qbcharger
 
 service time_daemon /vendor/bin/time_daemon
     class main

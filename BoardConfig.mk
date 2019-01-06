@@ -97,11 +97,6 @@ endif
 
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
-TARGET_LD_SHIM_LIBS := \
-   /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
-   /system/lib64/lib-imsvt.so|libshims_ims.so \
-   /system/vendor/lib64/libril-qc-qmi-1.so|libshims_rild_socket.so
-
 # Display
 BOARD_USES_ADRENO := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -198,6 +193,9 @@ TARGET_HAS_NO_WLAN_STATS := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 
+# ANT
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
 # RIL
 TARGET_RIL_VARIANT := caf
 
@@ -220,6 +218,9 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+# Security Patch Level
+VENDOR_SECURITY_PATCH := 2018-12-05
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
