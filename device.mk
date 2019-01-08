@@ -89,7 +89,8 @@ PRODUCT_PACKAGES += \
 
 # Healthd
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.msm8952
+    android.hardware.health@2.0-service.msm8952 \
+	onecharger
 
 # Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
