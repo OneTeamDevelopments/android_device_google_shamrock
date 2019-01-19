@@ -303,6 +303,10 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
+	
+# OTA
+PRODUCT_PACKAGES += \
+    Updates
 
 # Power
 PRODUCT_PACKAGES += \
@@ -317,6 +321,11 @@ PRODUCT_COPY_FILES += \
 # QMI
 PRODUCT_PACKAGES += \
     libjson
+	
+#QTI performance
+PRODUCT_BOOT_JARS += \
+    QPerformance \
+    UxPerformance
 	
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -381,7 +390,7 @@ PRODUCT_COPY_FILES += \
 
 # USB HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
+    android.hardware.usb@1.0-service.vince
 
 # VNDK
 PRODUCT_PACKAGES += \
