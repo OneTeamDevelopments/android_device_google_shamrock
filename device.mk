@@ -185,10 +185,6 @@ PRODUCT_PACKAGES += \
 	
 PRODUCT_BOOT_JARS += \
     WfdCommon
-	
-# Doze mode
-PRODUCT_PACKAGES += \
-    XiaomiDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -311,6 +307,10 @@ PRODUCT_PACKAGES += \
 # OTA
 PRODUCT_PACKAGES += \
     Updates
+	
+# Xiaomi Parts
+PRODUCT_PACKAGES += \
+    XiaomiParts
 
 # Power
 PRODUCT_PACKAGES += \
