@@ -39,7 +39,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.voice.path.for.pcm.voip=true \
 	vendor.voice.playback.conc.disabled=true \
 	vendor.voice.record.conc.disabled=false \
-	vendor.voice.voip.conc.disabled=true
+	vendor.voice.voip.conc.disabled=true \
+    persist.audio.dirac.speaker=true
 	
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.hw.binder.size_kbyte=1024
