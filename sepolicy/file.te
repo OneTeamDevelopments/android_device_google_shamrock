@@ -1,3 +1,6 @@
+# Camera
+type camera_socket, file_type, data_file_type;
+
 type ir_dev_file, file_type;
 
 allow ueventd ir_dev_file:chr_file { create setattr };
