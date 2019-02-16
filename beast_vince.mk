@@ -24,7 +24,7 @@ $(call inherit-product, device/xiaomi/vince/device.mk)
 # Inherit some common BeastROMs stuff.
 $(call inherit-product, vendor/beast/config/common.mk)
 
-TARGET_BOOT_ANIMATION_RES := 2160
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Device identifier
 PRODUCT_DEVICE := vince

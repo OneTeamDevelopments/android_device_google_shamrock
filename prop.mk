@@ -116,8 +116,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fm
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.fm.transmitter=false \
-    vendor.hw.fm.init=0
+    ro.fm.transmitter=false
 
 # Frp
 PRODUCT_PROPERTY_OVERRIDES += \
