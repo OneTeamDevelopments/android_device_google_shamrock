@@ -155,12 +155,6 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libtinyxml
 
-PRODUCT_PACKAGES += \
-    vendor.display.color@1.0-service \
-    vendor.display.color@1.0-impl \
-    vendor.display.config@1.1 \
-    vendor.display.config@1.1_vendor
-
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
@@ -274,9 +268,13 @@ PRODUCT_PACKAGES += \
     libandroid_net \
     netutils-wrapper-1.0
 
-# Power HAL
+# Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
+    power.qcom
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/perf/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perfboostsconfig.xml \
+    $(LOCAL_PATH)/perf/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -364,7 +362,9 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0
+    android.hidl.base@1.0_system \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0_system
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
