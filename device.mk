@@ -136,6 +136,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/camsounds/VideoStop.ogg:system/product/media/audio/ui/VideoStop.ogg \
     $(LOCAL_PATH)/camsounds/VideoRecord.ogg:system/product/media/audio/ui/VideoRecord.ogg
 
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
@@ -200,7 +201,6 @@ PRODUCT_PACKAGES += \
     libgnsspps \
     libsensorndkbridge
 
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
     $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
@@ -230,10 +230,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.1-service.clearkey
 
-# Jelly package
-PRODUCT_PACKAGES += \
-    Jelly
-
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
@@ -248,20 +244,28 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.shamrock
 
-# Media
+# OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libmm-omxcore \
+    libOmxAacDec \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
+    libOmxEvrcDec \
     libOmxEvrcEnc \
+    libOmxFlacDec \
+    libOmxFlacEnc \
+    libOmxQcelp13Dev \
     libOmxQcelp13Enc \
+    libOmxSwVencMpeg4 \
     libOmxSwVencHevc \
     libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVidcCommon \
     libOmxVenc \
-    libstagefrighthw
-
+    libstagefrighthw \
+    libstagefright_soft_flacdec
+	
 # Netutils
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
@@ -273,9 +277,8 @@ PRODUCT_PACKAGES += \
     power.qcom
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/perf/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perfboostsconfig.xml \
-    $(LOCAL_PATH)/perf/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
-
+    $(LOCAL_PATH)/perf/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perfboostsconfig.xml
+	
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.0 \
@@ -362,9 +365,7 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.base@1.0_system \
-    android.hidl.manager@1.0 \
-    android.hidl.manager@1.0_system
+    android.hidl.manager@1.0
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk

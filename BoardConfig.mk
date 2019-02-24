@@ -188,14 +188,9 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USE_SDCLANG := true
-TARGET_HAS_NO_WLAN_STATS := true
-BOARD_USES_QC_TIME_SERVICES := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
-
-# Power
-TARGET_USES_INTERACTION_BOOST := true
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -207,7 +202,7 @@ TARGET_RIL_VARIANT := caf
 BOARD_ROOT_EXTRA_FOLDERS := persist
 
 # SELinux
-include device/qcom/sepolicy/Android.mk
+include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_VERS := 28.0
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
