@@ -22,7 +22,7 @@ $(call inherit-product, device/google/shamrock/device.mk)
 # Inherit some common PixelExperience stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
-$(call inherit-product, vendor/aosp/config/common.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8952
@@ -31,7 +31,7 @@ TARGET_BOARD_PLATFORM_VARIANT := msm8952
 TARGET_BOOT_ANIMATION_RES := 1080
 
 BOARD_VENDOR := google
-PRODUCT_NAME := aosp_shamrock
+PRODUCT_NAME := lineage_shamrock
 PRODUCT_DEVICE := shamrock
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Google
