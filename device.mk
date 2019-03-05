@@ -174,6 +174,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
+    init.qcom.power.rc \
     init.qcom.usb.rc \
     init.target.rc \
     ueventd.qcom.rc
@@ -247,7 +248,9 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.shamrock
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
+    lights.msm8952
 
 # OMX
 PRODUCT_PACKAGES += \
