@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016, 2018, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -36,6 +36,8 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 #include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
 #include <utils/Log.h>
@@ -48,11 +50,41 @@
 #include "performance.h"
 #include "power-common.h"
 
+#define MIN_VAL(X,Y) ((X>Y)?(Y):(X))
+
 static int saved_interactive_mode = -1;
 static int display_hint_sent;
 static int video_encode_hint_sent;
+static int cam_preview_hint_sent;
 
+pthread_mutex_t camera_hint_mutex = PTHREAD_MUTEX_INITIALIZER;
+static int camera_hint_ref_count;
 static void process_video_encode_hint(void *metadata);
+//static void process_cam_preview_hint(void *metadata);
+
+static int display_fd;
+#define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
+
+static bool is_target_SDM632() /* Returns value=632 if target is SDM632 else value 0 */
+{
+    int fd;
+    bool is_target_SDM632 = false;
+    char buf[10] = {0};
+    fd = open("/sys/devices/soc0/soc_id", O_RDONLY);
+    if (fd >= 0) {
+        if (read(fd, buf, sizeof(buf) - 1) == -1) {
+            ALOGW("Unable to read soc_id");
+            is_target_SDM632 = false;
+        } else {
+            int soc_id = atoi(buf);
+            if (soc_id == 349 || soc_id == 350) {
+                is_target_SDM632 = true; /* Above SOCID for SDM632 */
+            }
+        }
+    }
+    close(fd);
+    return is_target_SDM632;
+}
 
 int  power_hint_override(struct power_module *module, power_hint_t hint,
         void *data)
@@ -75,7 +107,13 @@ int  set_interactive_override(struct power_module *module, int on)
     char governor[80];
     char tmp_str[NODE_MAX];
     struct video_encode_metadata_t video_encode_metadata;
-    int rc;
+    int rc = 0;
+
+    static const char *display_on = "1";
+    static const char *display_off = "0";
+    char err_buf[80];
+    static int init_interactive_hint = 0;
+    static int set_i_count = 0;
 
     ALOGI("Got set_interactive hint");
 
@@ -94,10 +132,9 @@ int  set_interactive_override(struct power_module *module, int on)
         /* Display off. */
              if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-               int resource_values[] = {INT_OP_CLUSTER0_TIMER_RATE, BIG_LITTLE_TR_MS_50,
-                                        INT_OP_CLUSTER1_TIMER_RATE, BIG_LITTLE_TR_MS_50,
-                                        INT_OP_NOTIFY_ON_MIGRATE, 0x00};
-
+            /* timer rate - 40mS*/
+            int resource_values[] = {0x41424000, 0x28,
+                                     };
                if (!display_hint_sent) {
                    perform_hint_action(DISPLAY_STATE_HINT_ID,
                    resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
@@ -115,13 +152,50 @@ int  set_interactive_override(struct power_module *module, int on)
           }
    }
     saved_interactive_mode = !!on;
+
+    set_i_count ++;
+    ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
+
+    if (init_interactive_hint == 0)
+    {
+        //First time the display is turned off
+        display_fd = TEMP_FAILURE_RETRY(open(SYS_DISPLAY_PWR, O_RDWR));
+        if (display_fd < 0) {
+            strerror_r(errno,err_buf,sizeof(err_buf));
+            ALOGE("Error opening %s: %s\n", SYS_DISPLAY_PWR, err_buf);
+            return HINT_HANDLED;
+        }
+        else
+            init_interactive_hint = 1;
+    }
+    else
+        if (!on ) {
+            /* Display off. */
+            rc = TEMP_FAILURE_RETRY(write(display_fd, display_off, strlen(display_off)));
+            if (rc < 0) {
+                strerror_r(errno,err_buf,sizeof(err_buf));
+                ALOGE("Error writing %s to  %s: %s\n", display_off, SYS_DISPLAY_PWR, err_buf);
+            }
+        }
+        else {
+            /* Display on */
+            rc = TEMP_FAILURE_RETRY(write(display_fd, display_on, strlen(display_on)));
+            if (rc < 0) {
+                strerror_r(errno,err_buf,sizeof(err_buf));
+                ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
+            }
+        }
+
     return HINT_HANDLED;
 }
+
 
 /* Video Encode Hint */
 static void process_video_encode_hint(void *metadata)
 {
-    char governor[80];
+    char governor[80] = {0};
+    int resource_values[20] = {0};
+    int num_resources = 0;
     struct video_encode_metadata_t video_encode_metadata;
 
     ALOGI("Got process_video_encode_hint");
@@ -135,7 +209,7 @@ static void process_video_encode_hint(void *metadata)
                             if (get_scaling_governor_check_cores(governor,
                                 sizeof(governor),CPU3) == -1) {
                                     ALOGE("Can't obtain scaling governor.");
-                                    return;
+                                    // return HINT_HANDLED;
                             }
                     }
             }
@@ -157,39 +231,96 @@ static void process_video_encode_hint(void *metadata)
     }
 
     if (video_encode_metadata.state == 1) {
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR,
-            strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            /* Sched_load and migration_notif*/
-            int resource_values[] = {INT_OP_CLUSTER0_USE_SCHED_LOAD,
-                                     0x1,
-                                     INT_OP_CLUSTER1_USE_SCHED_LOAD,
-                                     0x1,
-                                     INT_OP_CLUSTER0_USE_MIGRATION_NOTIF,
-                                     0x1,
-                                     INT_OP_CLUSTER1_USE_MIGRATION_NOTIF,
-                                     0x1,
-                                     INT_OP_CLUSTER0_TIMER_RATE,
-                                     BIG_LITTLE_TR_MS_40,
-                                     INT_OP_CLUSTER1_TIMER_RATE,
-                                     BIG_LITTLE_TR_MS_40
-                                     };
-            if (!video_encode_hint_sent) {
-                perform_hint_action(video_encode_metadata.hint_id,
-                resource_values,
-                sizeof(resource_values)/sizeof(resource_values[0]));
-                video_encode_hint_sent = 1;
+        if((strncmp(governor, SCHEDUTIL_GOVERNOR,
+            strlen(SCHEDUTIL_GOVERNOR)) == 0) &&
+            (strlen(governor) == strlen(SCHEDUTIL_GOVERNOR))) {
+            if(is_target_SDM632()) {
+                /* sample_ms = 10mS
+                * SLB for Core0 = -6
+                * SLB for Core1 = -6
+                * SLB for Core2 = -6
+                * SLB for Core3 = -6
+                * hispeed load = 95
+                * hispeed freq = 1036 */
+                int res[] = {0x41820000, 0xa,
+                             0x40c68100, 0xfffffffa,
+                             0x40c68110, 0xfffffffa,
+                             0x40c68120, 0xfffffffa,
+                             0x40c68130, 0xfffffffa,
+                             0x41440100, 0x5f,
+                             0x4143c100, 0x40c,
+                             };
+                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
+                num_resources = sizeof(res)/sizeof(res[0]);
+                pthread_mutex_lock(&camera_hint_mutex);
+                camera_hint_ref_count++;
+                if (camera_hint_ref_count == 1) {
+                    if (!video_encode_hint_sent) {
+                        perform_hint_action(video_encode_metadata.hint_id,
+                        resource_values, num_resources);
+                        video_encode_hint_sent = 1;
+                    }
+                }
+                pthread_mutex_unlock(&camera_hint_mutex);
+            }
+            else {
+                /* sample_ms = 10mS */
+                int res[] = {0x41820000, 0xa,
+                            };
+                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
+                num_resources = sizeof(res)/sizeof(res[0]);
+                pthread_mutex_lock(&camera_hint_mutex);
+                camera_hint_ref_count++;
+                if (camera_hint_ref_count == 1) {
+                    if (!video_encode_hint_sent) {
+                        perform_hint_action(video_encode_metadata.hint_id,
+                        resource_values, num_resources);
+                        video_encode_hint_sent = 1;
+                    }
+                }
+                pthread_mutex_unlock(&camera_hint_mutex);
             }
         }
-    } else if (video_encode_metadata.state == 0) {
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR,
+        else if ((strncmp(governor, INTERACTIVE_GOVERNOR,
             strlen(INTERACTIVE_GOVERNOR)) == 0) &&
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            undo_hint_action(video_encode_metadata.hint_id);
-            video_encode_hint_sent = 0;
+            /* Sched_load and migration_notification disable
+            * timer rate - 40mS*/
+            int res[] = {0x41430000, 0x1,
+                         0x41434000, 0x1,
+                         0x41424000, 0x28,
+                         };
+            memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
+            num_resources = sizeof(res)/sizeof(res[0]);
+            pthread_mutex_lock(&camera_hint_mutex);
+            camera_hint_ref_count++;
+            if (camera_hint_ref_count == 1) {
+                if (!video_encode_hint_sent) {
+                    perform_hint_action(video_encode_metadata.hint_id,
+                    resource_values, num_resources);
+                    video_encode_hint_sent = 1;
+                }
+           }
+           pthread_mutex_unlock(&camera_hint_mutex);
+        }
+    } else if (video_encode_metadata.state == 0) {
+        if (((strncmp(governor, INTERACTIVE_GOVERNOR,
+            strlen(INTERACTIVE_GOVERNOR)) == 0) &&
+            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) ||
+            ((strncmp(governor, SCHEDUTIL_GOVERNOR,
+            strlen(SCHEDUTIL_GOVERNOR)) == 0) &&
+            (strlen(governor) == strlen(SCHEDUTIL_GOVERNOR)))) {
+            pthread_mutex_lock(&camera_hint_mutex);
+            camera_hint_ref_count--;
+            if (!camera_hint_ref_count) {
+                undo_hint_action(video_encode_metadata.hint_id);
+                video_encode_hint_sent = 0;
+            }
+            pthread_mutex_unlock(&camera_hint_mutex);
             return ;
         }
     }
     return;
 }
+
 

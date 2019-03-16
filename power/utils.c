@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013,2015-2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2012-2013,2015-2018, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -33,20 +33,21 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "utils.h"
 #include "list.h"
 #include "hint-data.h"
 #include "power-common.h"
 
-#define LOG_TAG "QCOM PowerHAL"
+#define LOG_TAG "QTI PowerHAL"
 #include <utils/Log.h>
 
 char scaling_gov_path[4][80] ={
-    "sys/devices/system/cpu/cpu4/cpufreq/scaling_governor",
-    "sys/devices/system/cpu/cpu5/cpufreq/scaling_governor",
-    "sys/devices/system/cpu/cpu6/cpufreq/scaling_governor",
-    "sys/devices/system/cpu/cpu7/cpufreq/scaling_governor"
+    "sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
+    "sys/devices/system/cpu/cpu1/cpufreq/scaling_governor",
+    "sys/devices/system/cpu/cpu2/cpufreq/scaling_governor",
+    "sys/devices/system/cpu/cpu3/cpufreq/scaling_governor"
 };
 
 #define PERF_HAL_PATH "libqti-perfd-client.so"
@@ -254,7 +255,7 @@ int perf_hint_enable(int hint_id , int duration)
         if (perf_hint) {
             lock_handle = perf_hint(hint_id, NULL, duration, -1);
             if (lock_handle == -1)
-                ALOGE("Failed to acquire lock.");
+                ALOGE("Failed to acquire lock for hint_id: %X.", hint_id);
         }
     }
     return lock_handle;
