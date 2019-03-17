@@ -33,7 +33,7 @@
 #include <inttypes.h>
 #include <LocApiBase.h>
 #include <LocAdapterBase.h>
-#include <log_util.h>
+#include <platform_lib_log_util.h>
 #include <LocDualContext.h>
 
 namespace loc_core {
@@ -107,16 +107,19 @@ struct LocSsrMsg : public LocMsg {
 
 struct LocOpenMsg : public LocMsg {
     LocApiBase* mLocApi;
-    inline LocOpenMsg(LocApiBase* locApi) :
-            LocMsg(), mLocApi(locApi)
+    LOC_API_ADAPTER_EVENT_MASK_T mMask;
+    inline LocOpenMsg(LocApiBase* locApi,
+                      LOC_API_ADAPTER_EVENT_MASK_T mask) :
+        LocMsg(), mLocApi(locApi), mMask(mask)
     {
         locallog();
     }
     inline virtual void proc() const {
-        mLocApi->open(mLocApi->getEvtMask());
+        mLocApi->open(mMask);
     }
     inline void locallog() const {
-        LOC_LOGv("LocOpen Mask: %" PRIx64 "\n", mLocApi->getEvtMask());
+        LOC_LOGV("%s:%d]: LocOpen Mask: %x\n",
+                 __func__, __LINE__, mMask);
     }
     inline virtual void log() const {
         locallog();
@@ -160,7 +163,8 @@ void LocApiBase::addAdapter(LocAdapterBase* adapter)
     for (int i = 0; i < MAX_ADAPTERS && mLocAdapters[i] != adapter; i++) {
         if (mLocAdapters[i] == NULL) {
             mLocAdapters[i] = adapter;
-            mMsgTask->sendMsg(new LocOpenMsg(this));
+            mMsgTask->sendMsg(new LocOpenMsg(this,
+                                             (adapter->getEvtMask())));
             break;
         }
     }
@@ -196,7 +200,7 @@ void LocApiBase::removeAdapter(LocAdapterBase* adapter)
                 close();
             } else {
                 // else we need to remove the bit
-                mMsgTask->sendMsg(new LocOpenMsg(this));
+                mMsgTask->sendMsg(new LocOpenMsg(this, getEvtMask()));
             }
         }
     }
@@ -204,7 +208,7 @@ void LocApiBase::removeAdapter(LocAdapterBase* adapter)
 
 void LocApiBase::updateEvtMask()
 {
-    open(getEvtMask());
+    mMsgTask->sendMsg(new LocOpenMsg(this, getEvtMask()));
 }
 
 void LocApiBase::handleEngineUpEvent()

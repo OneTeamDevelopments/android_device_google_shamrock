@@ -52,7 +52,6 @@ GnssMeasurement::~GnssMeasurement() {
 }
 
 // Methods from ::android::hardware::gnss::V1_0::IGnssMeasurement follow.
-
 Return<IGnssMeasurement::GnssMeasurementStatus> GnssMeasurement::setCallback(
         const sp<V1_0::IGnssMeasurementCallback>& callback)  {
 
@@ -76,7 +75,6 @@ Return<IGnssMeasurement::GnssMeasurementStatus> GnssMeasurement::setCallback(
     mGnssMeasurementCbIface->linkToDeath(mGnssMeasurementDeathRecipient, 0);
 
     return mApi->measurementSetCallback(callback);
-
 }
 
 Return<void> GnssMeasurement::close()  {
