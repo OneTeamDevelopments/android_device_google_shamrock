@@ -95,7 +95,7 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
-
+WITH_DEXPREOPT := true
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Display
