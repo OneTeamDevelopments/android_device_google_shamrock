@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/beast_vince.mk
+    $(LOCAL_DIR)/legion_vince.mk

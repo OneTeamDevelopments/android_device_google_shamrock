@@ -1,1 +1,1 @@
-add_lunch_combo beast_vince-userdebug
+add_lunch_combo legion_vince-userdebug
