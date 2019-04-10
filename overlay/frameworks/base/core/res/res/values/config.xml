@@ -251,6 +251,24 @@
          The user is forbidden from setting the brightness below this level. -->
     <integer name="config_screenBrightnessSettingMinimum">1</integer>
 
+   <!-- Default files to pin via Pinner Service -->
+   <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+       <item>"/system/framework/arm64/boot-framework.oat"</item>
+       <item>"/system/framework/boot-framework.vdex"</item>
+       <item>"/system/framework/oat/arm64/services.odex"</item>
+       <item>"/system/framework/oat/arm64/services.vdex"</item>
+       <item>"/system/framework/arm64/boot.oat"</item>
+       <item>"/system/framework/boot.vdex"</item>
+       <item>"/system/framework/arm64/boot-core-libart.oat"</item>
+       <item>"/system/framework/boot-core-libart.vdex"</item>
+       <item>"/system/priv-app/SystemUI/oat/arm64/SystemUI.vdex"</item>
+       <item>"/system/priv-app/SystemUI/oat/arm64/SystemUI.odex"</item>
+       <item>"/system/lib64/libsurfaceflinger.so"</item>
+   </string-array>
+   
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
+
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
@@ -526,6 +544,9 @@
          or a single SIM device can have 1 phones/logical modems, but 2 physical slots (one eSIM
          and one pSIM) -->
     <integer name="config_num_physical_slots">2</integer>
+    
+    <!-- reference volume index for music stream to limit headphone volume and display warning -->
+    <integer name="config_safe_media_volume_index">15</integer>
 
     <!-- Flag indicating whether we should enable smart battery. -->
     <bool name="config_smart_battery_available">true</bool>
@@ -538,4 +559,9 @@
 
     <!-- Whether device ignores the RSSNR signal implementation -->
     <bool name="config_ignoreRssnrSignalLevel">true</bool>
+    
+    <!-- Set the automatic brightness mode on by default -->
+    <bool name="def_screen_brightness_automatic_mode">false</bool>
+    
+     <bool name="def_bluetooth_on">false</bool>
 </resources>
