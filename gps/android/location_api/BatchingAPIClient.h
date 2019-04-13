@@ -39,7 +39,7 @@
 namespace android {
 namespace hardware {
 namespace gnss {
-namespace V1_1 {
+namespace V1_0 {
 namespace implementation {
 
 class BatchingAPIClient : public LocationAPIClientBase
@@ -63,12 +63,11 @@ public:
 private:
     sp<V1_0::IGnssBatchingCallback> mGnssBatchingCbIface;
     uint32_t mDefaultId;
-    int mBatchSize;
     LocationCapabilitiesMask mLocationCapabilitiesMask;
 };
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_0
 }  // namespace gnss
 }  // namespace hardware
 }  // namespace android

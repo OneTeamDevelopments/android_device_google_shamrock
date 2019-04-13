@@ -30,16 +30,17 @@
 #ifndef GNSS_API_CLINET_H
 #define GNSS_API_CLINET_H
 
+
 #include <mutex>
-#include <android/hardware/gnss/1.1/IGnss.h>
-#include <android/hardware/gnss/1.1/IGnssCallback.h>
+#include <android/hardware/gnss/1.0/IGnss.h>
+#include <android/hardware/gnss/1.0/IGnssCallback.h>
 #include <android/hardware/gnss/1.0/IGnssNiCallback.h>
 #include <LocationAPIClientBase.h>
 
 namespace android {
 namespace hardware {
 namespace gnss {
-namespace V1_1 {
+namespace V1_0 {
 namespace implementation {
 
 using ::android::sp;
@@ -95,11 +96,12 @@ private:
     LocationAPIControlClient* mControlClient;
     LocationCapabilitiesMask mLocationCapabilitiesMask;
     bool mLocationCapabilitiesCached;
+
     LocationOptions mLocationOptions;
 };
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_0
 }  // namespace gnss
 }  // namespace hardware
 }  // namespace android

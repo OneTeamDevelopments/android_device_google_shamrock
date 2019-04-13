@@ -25,7 +25,7 @@
 namespace android {
 namespace hardware {
 namespace gnss {
-namespace V1_1 {
+namespace V1_0 {
 namespace implementation {
 
 using ::android::hardware::hidl_vec;
@@ -114,6 +114,23 @@ Return<void> GnssDebug::getDebugData(getDebugData_cb _hidl_cb)
         data.position.bearingAccuracyDegrees = GNSS_DEBUG_UNKNOWN_BEARING_ACCURACY_DEG;
     }
 
+    if (data.position.horizontalAccuracyMeters <= 0 ||
+        data.position.horizontalAccuracyMeters > GNSS_DEBUG_UNKNOWN_HORIZONTAL_ACCURACY_METERS) {
+        data.position.horizontalAccuracyMeters = GNSS_DEBUG_UNKNOWN_HORIZONTAL_ACCURACY_METERS;
+    }
+    if (data.position.verticalAccuracyMeters <= 0 ||
+        data.position.verticalAccuracyMeters > GNSS_DEBUG_UNKNOWN_VERTICAL_ACCURACY_METERS) {
+        data.position.verticalAccuracyMeters = GNSS_DEBUG_UNKNOWN_VERTICAL_ACCURACY_METERS;
+    }
+    if (data.position.speedAccuracyMetersPerSecond <= 0 ||
+        data.position.speedAccuracyMetersPerSecond > GNSS_DEBUG_UNKNOWN_SPEED_ACCURACY_PER_SEC) {
+        data.position.speedAccuracyMetersPerSecond = GNSS_DEBUG_UNKNOWN_SPEED_ACCURACY_PER_SEC;
+    }
+    if (data.position.bearingAccuracyDegrees <= 0 ||
+        data.position.bearingAccuracyDegrees > GNSS_DEBUG_UNKNOWN_BEARING_ACCURACY_DEG) {
+        data.position.bearingAccuracyDegrees = GNSS_DEBUG_UNKNOWN_BEARING_ACCURACY_DEG;
+    }
+
     // time block
     if (reports.mTime.mValid) {
         data.time.timeEstimate = reports.mTime.timeEstimate;
@@ -122,11 +139,8 @@ Return<void> GnssDebug::getDebugData(getDebugData_cb _hidl_cb)
             reports.mTime.frequencyUncertaintyNsPerSec;
     }
 
-    if (data.time.timeEstimate <= 0 ||
-        data.time.timeEstimate > GNSS_DEBUG_UNKNOWN_UTC_TIME) {
+    if (data.time.timeEstimate < GNSS_DEBUG_UNKNOWN_UTC_TIME) {
         data.time.timeEstimate = GNSS_DEBUG_UNKNOWN_UTC_TIME;
-        data.time.timeUncertaintyNs = (float)(GNSS_DEBUG_UNKNOWN_UTC_TIME_UNC);
-        data.time.frequencyUncertaintyNsPerSec = 0;
     }
     if (data.time.timeUncertaintyNs <= 0 ||
         data.time.timeUncertaintyNs > (float)GNSS_DEBUG_UNKNOWN_UTC_TIME_UNC) {
@@ -170,7 +184,7 @@ Return<void> GnssDebug::getDebugData(getDebugData_cb _hidl_cb)
 }
 
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_0
 }  // namespace gnss
 }  // namespace hardware
 }  // namespace android
