@@ -49,13 +49,13 @@ ro.config.vc_call_vol_steps=7
 
 # ACDB Paths
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.calfile0=/vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
-    persist.audio.calfile1=/vendor/etc/acdbdata/MTP/MTP_General_cal.acdb \
-    persist.audio.calfile2=/vendor/etc/acdbdata/MTP/MTP_Global_cal.acdb \
-    persist.audio.calfile3=/vendor/etc/acdbdata/MTP/MTP_Handset_cal.acdb \
-    persist.audio.calfile4=/vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
-    persist.audio.calfile5=/vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
-    persist.audio.calfile6=/vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
+persist.audio.calfile0=/vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
+persist.audio.calfile1=/vendor/etc/acdbdata/MTP/MTP_General_cal.acdb \
+persist.audio.calfile2=/vendor/etc/acdbdata/MTP/MTP_Global_cal.acdb \
+persist.audio.calfile3=/vendor/etc/acdbdata/MTP/MTP_Handset_cal.acdb \
+persist.audio.calfile4=/vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
+persist.audio.calfile5=/vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
+persist.audio.calfile6=/vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -300,7 +300,7 @@ ro.lge.proximity.delay=25 \
 mot.proximity.delay=25 \
 ro.telephony.call_ring.delay=0 \
 ring.delay=0 \
-windowsmgr.max_events_per_sec=150 \
+windowsmgr.max_events_per_sec=0 \
 ro.min_pointer_dur=8 \
 ro.max.fling_velocity=12000 \
 ro.min.fling_velocity=8000 \
