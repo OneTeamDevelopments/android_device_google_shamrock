@@ -235,3 +235,6 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
+
+# Treble Internal Error Fix
+$(shell sed -i "/ro.treble.enabled/d" build/make/core/main.mk)
