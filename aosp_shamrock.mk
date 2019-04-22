@@ -22,6 +22,7 @@ $(call inherit-product, device/google/shamrock/device.mk)
 # Inherit some common AOSP stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
+CUSTOM_BUILD_TYPE := OFFICIAL
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # Must define platform variant before including any common things
