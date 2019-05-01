@@ -26,7 +26,6 @@
 #
 
 import /vendor/etc/init/hw/init.qcom.usb.rc
-import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.target.rc
 
 on early-init
@@ -199,10 +198,10 @@ on boot
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 	
     # Flashlight
-    chown root system /sys/devices/platform/soc/qpnp-flash-led-24/leds/led:torch_0/max_brightness
-    chmod 0660 /sys/devices/platform/soc/qpnp-flash-led-24/leds/led:torch_0/max_brightness
-    chown root system /sys/devices/platform/soc/qpnp-flash-led-24/leds/led:torch_1/max_brightness
-    chmod 0660 /sys/devices/platform/soc/qpnp-flash-led-24/leds/led:torch_1/max_brightness
+    chown root system /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_0/max_brightness
+    chmod 0660 /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_0/max_brightness
+    chown root system /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_1/max_brightness
+    chmod 0660 /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_1/max_brightness
 
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
@@ -438,6 +437,10 @@ on property:sys.boot_completed=1
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
+# Enable ZRAM on boot_complete
+    swapon_all /system/vendor/etc/fstab.qcom
+    write /proc/sys/vm/swappiness 100
+
 on property:persist.vendor.radio.atfwd.start=false
     stop vendor.atfwd
 
@@ -446,8 +449,6 @@ on property:vendor.radio.atfwd.start=false
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bt_addr
-    stop vendor.camera-provider-2-4
-    start vendor.camera-provider-2-4
     start wcnss-service
 
 on property:persist.env.fastdorm.enabled=true
