@@ -17,9 +17,6 @@
     <string name="app_name">XiaomiShit</string>
     <string name="advanced_settings">Xiaomi Shit</string>
     <string name="advanced_settings_summary">Advanced</string> 
-    <string name="category_system">System</string>
-    <string name="vib_strength_title_head">Vibration strength</string>
-
     <string name="display_title">Display</string>
     <string name="device_doze_title">Ambient display</string>
 

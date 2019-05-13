@@ -14,12 +14,12 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
+    <!--PreferenceCategory
         android:title="@string/category_system">
         <com.xiaomi.shit.VibratorStrengthPreference
             android:key="vib_strength"
             android:title="@string/vib_strength_title_head" />
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
     <PreferenceCategory
         android:key="display"
