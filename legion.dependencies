@@ -1,0 +1,18 @@
+[
+  {
+    "repository": "platform_device_xiaomi_vince",
+    "target_path": "device/xiaomi/vince"
+  },
+  {
+    "repository": "platform_kernel_xiaomi_msm8953-vince",
+    "target_path": "kernel/xiaomi/msm8953"
+  },
+  {
+    "repository": "platform_vendor_xiaomi_vince",
+    "target_path": "vendor/xiaomi"
+  },
+  {
+    "repository": platform_vendor_MiuiCamera",
+    "target_path": "vendor/MiuiCamera"
+  }
+]
