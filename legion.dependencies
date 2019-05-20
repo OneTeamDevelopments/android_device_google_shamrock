@@ -12,7 +12,7 @@
     "target_path": "vendor/xiaomi"
   },
   {
-    "repository": vendor_MiuiCamera",
+    "repository": "vendor_MiuiCamera",
     "target_path": "vendor/MiuiCamera"
   }
 ]
