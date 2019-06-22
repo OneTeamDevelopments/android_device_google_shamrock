@@ -190,6 +190,7 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/devices/platform/soc/78b7000.i2c/i2c-3/3-0020/i
 
 # Qualcomm
 BOARD_USES_QCOM_HARDWARE := true
+TARGET_USE_SDCLANG := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
