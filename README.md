@@ -1,16 +1,17 @@
-This repository contains device configuration for Xiaomi Redmi 5 Plus (vince)
+This repository contains device configuration for GM 5 Plus (shamrock)
 
-Basic   | Spec Sheet
--------:|:----------
-CPU     | Octa-core 2.02 GHz ARM Cortex A53
-Chipset | Qualcomm Snapdragon 625, MSM8953
-GPU     | Adreno 506
-ROM     | 32/64GB 
-RAM     | 3/4GB
-Android | 7.1.2
-Battery | 4000 mAh
-Display | 1080x2160 pixels, 5.99
-Rear Camera  | 12MP, PDAF
-Front Camera | 5 MP
+Basic   | Specifications
+-------:|:-------------------------
+CPU     | Quad-core 1.5 GHz ARM® Cortex™ A53 and quad-core 1.2 GHz ARM® Cortex™ A53
+CHIPSET | Qualcomm MSM8952 Snapdragon 617
+GPU     | Adreno 405
+Memory  | 3 GB
+Android | 6.0.1
+Storage | 32 GB
+MicroSD | Up to 128 GB
+Battery | 3100 mAh (non-removable)
+Display | 1080 x 1920 pixels, 5.5"
+Rear Camera  | 13.0 MP Dual-Flash
+Front Camera | 13.0 MP
 
-![Xiaomi Redmi 5 Plus](https://cdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-5-plus-2.jpg "Xiaomi Redmi 5 Plus")
+![GM 5 Plus](https://store.donanimhaber.com/60/82/10/6082104c6938ec1419267a2a1d9aeeef.jpg "GM 5 Plus")

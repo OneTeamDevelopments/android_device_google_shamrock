@@ -1,5 +1,5 @@
 #
-# system.prop for vince
+# system.prop for shamrock
 #
 
 # ART
@@ -40,9 +40,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.voice.path.for.pcm.voip=true \
 	vendor.voice.playback.conc.disabled=true \
 	vendor.voice.record.conc.disabled=false \
-	vendor.voice.voip.conc.disabled=true \
-    persist.audio.dirac.speaker=true
-	
+	vendor.voice.voip.conc.disabled=true
+
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.hw.binder.size_kbyte=1024
 
@@ -71,7 +70,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vidc.enc.dcvs.extra-buff-count=2 \
     persist.camera.CDS=off \
     persist.camera.video.CDS=off \
-    persist.camera.HAL3.enabled=1 \
+    persist.camera.HAL3.enabled=0 \
 	persist.camera.eis.enable=1 \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
 
@@ -101,13 +100,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.hwc.mdpcomp.enable=true \
 	ro.opengles.version=196610 \
 	ro.qualcomm.cabl=0 \
-	ro.sf.lcd_density=440 \
+	ro.sf.lcd_density=420 \
 	ro.vendor.display.cabl=2 \
 	sdm.debug.disable_skip_validate=1 \
 	vendor.display.disable_skip_validate=1 \
 	vendor.display.enable_default_color_mode=0 \
 	vendor.gralloc.enable_fb_ubwc=1
-	
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
@@ -129,7 +128,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.gps.qc_nlp_in_use=1 \
 	persist.loc.nlp_name=com.qualcomm.location \
 	ro.gps.agps_provider=1
-	
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     av.debug.disable.pers.cache=1 \
@@ -146,7 +145,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.vidc.enc.disable.pq=true \
 	vendor.vidc.enc.disable_bframes=1 \
 	vendor.video.disable.ubwc=1
-	
+
 # Memory optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.bservice_enable=true
@@ -154,8 +153,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
-	
-#QTI Performance
+
+# QTI Performance
 PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.enable_prefetch=1 \
 	vendor.iop.enable_uxe=1 \
@@ -163,7 +162,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.perf.iop_v3.enable=1 \
 	ro.vendor.at_library=libqti-at.so \
 	persist.vendor.qti.games.gt.prof=1
-	
+
 # Netmgrd
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=true \
@@ -211,16 +210,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Tcp
 PRODUCT_PROPERTY_OVERRIDES += \
     net.tcp.2g_init_rwnd=10
-	
+
 # UI
 PRODUCT_PROPERTY_OVERRIDES += \
 sys.use_fifo_ui=1
-
-# Usb
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.usb.config.extra=none
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
+# Navbar
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0

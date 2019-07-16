@@ -331,7 +331,7 @@ case "$target" in
              esac
         fi
         ;;
-    "msm8953")
+    "msm8952")
 	start_msm_irqbalance_8939
         ;;
     "sdm710")

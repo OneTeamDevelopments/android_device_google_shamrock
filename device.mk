@@ -20,8 +20,8 @@
 # definition file).
 #
 
-$(call inherit-product, vendor/xiaomi/msm8953-common/msm8953-common-vendor.mk)
-$(call inherit-product, vendor/xiaomi/vince/vince-vendor.mk)
+$(call inherit-product, vendor/google/msm8952-common/msm8952-common-vendor.mk)
+$(call inherit-product, vendor/google/shamrock/shamrock-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -34,8 +34,9 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2160
-TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 1080
+TARGET_SCREEN_WIDTH := 1920
+TARGET_BOOTANIMATION_HALF_RES := true
 
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -55,8 +56,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -83,10 +82,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# Advanced Controls
-#PRODUCT_PACKAGES += \
-#	AdvancedControls
-
 # ANT
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -110,7 +105,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@4.0 \
     android.hardware.audio.effect@4.0-impl \
     audio.a2dp.default \
-    audio.primary.msm8953 \
+    audio.primary.msm8952 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
@@ -146,11 +141,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0_vendor
 
-# Consumerir
-PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-impl \
-    android.hardware.ir@1.0-service
-
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
@@ -158,10 +148,6 @@ PRODUCT_PACKAGES += \
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
-
-# Xiaomi Shit
-PRODUCT_PACKAGES += \
-    XiaomiShit
 
 # Display
 PRODUCT_PACKAGES += \
@@ -172,10 +158,10 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    copybit.msm8953 \
-    gralloc.msm8953 \
-    hwcomposer.msm8953 \
-    memtrack.msm8953 \
+    copybit.msm8952 \
+    gralloc.msm8952 \
+    hwcomposer.msm8952 \
+    memtrack.msm8952 \
     libdisplayconfig \
     liboverlay \
     libqdMetaData.system \
@@ -185,7 +171,7 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.1 \
     vendor.display.config@1.0_vendor \
     vendor.display.config@1.1_vendor
-	
+
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
@@ -214,7 +200,7 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl-qti \
-    gps.msm8953 \
+    gps.msm8952 \
     libcurl \
     libgnss \
     libgnsspps
@@ -243,14 +229,6 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0_system
 
-# Input
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/msm8953-snd-card-mtp_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/msm8953-snd-card-mtp_Button_Jack.kl \
-    $(LOCAL_PATH)/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
-    $(LOCAL_PATH)/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl 
-
-
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
@@ -271,7 +249,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.vince
+    android.hardware.light@2.0-service.shamrock
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -309,9 +287,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Updates
 	
-# Xiaomi Parts
+# google Parts
 PRODUCT_PACKAGES += \
-    XiaomiParts
+    googleParts
 
 # Power
 PRODUCT_PACKAGES += \
@@ -321,7 +299,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 # Properties
--include device/xiaomi/vince/prop.mk
+-include device/google/shamrock/prop.mk
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -335,9 +313,7 @@ PRODUCT_BOOT_JARS += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.msm.usb.configfs.rc \
     init.qcom.rc \
-    init.vince.rc \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.target.rc \
@@ -348,8 +324,7 @@ PRODUCT_PACKAGES += \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     move_time_data.sh \
-    move_wifi_data.sh \
-    init.goodix.sh
+    move_wifi_data.sh
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -392,7 +367,7 @@ PRODUCT_COPY_FILES += \
 
 # USB HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.vince
+    android.hardware.usb@1.0-service.shamrock
 
 # VNDK
 PRODUCT_PACKAGES += \
@@ -400,7 +375,7 @@ PRODUCT_PACKAGES += \
 	
 # Thermal
 PRODUCT_PACKAGES += \
-    thermal.msm8953
+    thermal.msm8952
 
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
@@ -413,7 +388,7 @@ PRODUCT_PACKAGES += \
 	
 # VR
 PRODUCT_PACKAGES += \
-    vr.msm8953
+    vr.msm8952
 
 PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-impl \
@@ -449,3 +424,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+	
+# Debug
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 \
+    persist.sys.usb.config=adb \
+    ro.secure=0 \
+    ro.adb.secure=0
+
