@@ -210,10 +210,18 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 # Security patch level
 VENDOR_SECURITY_PATCH := 2019-04-05
 
+# Force Disable ADB Secure
+$(shell sed -i "s/ro.secure=1/ro.secure=0/g" build/make/core/main.mk)
+$(shell sed -i "s/ro.adb.secure=1/ro.adb.secure=0/g" build/make/core/main.mk)
+$(shell sed -i "s/security.perf_harden=1/security.perf_harden=0/g" build/make/core/main.mk)
+
 # Treble
 PRODUCT_VENDOR_MOVE_ENABLED := true
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-# PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+
+# VNDK Lite Fix
+$(shell sed -i "/ro.vndk.lite/d" build/make/core/Makefile)
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
