@@ -71,7 +71,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.camera.CDS=off \
 	persist.camera.video.CDS=off \
 	persist.camera.HAL3.enabled=0 \
-	persist.camera.eis.enable=1 \
+	persist.camera.eis.enable=0 \
 	vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
 
 # Cne
