@@ -4,8 +4,8 @@
 
 # ART
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter=speed \
-    dalvik.vm.image-dex2oat-filter=speed
+	dalvik.vm.dex2oat-filter=speed \
+	dalvik.vm.image-dex2oat-filter=speed
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -17,8 +17,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.audio.fluence.speaker=true \
 	persist.vendor.audio.fluence.voicecall=true \
 	persist.vendor.audio.fluence.voicerec=false \
-    ro.config.media_vol_steps=25 \
-    ro.config.vc_call_vol_steps=7 \
+	ro.config.media_vol_steps=25 \
+	ro.config.vc_call_vol_steps=7 \
 	persist.vendor.btstack.enable.splita2dp=false \
 	ro.vendor.audio.sdk.fluencetype=fluence \
 	ro.vendor.audio.sdk.ssr=false \
@@ -43,55 +43,55 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.voice.voip.conc.disabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.audio.hw.binder.size_kbyte=1024
+	persist.vendor.audio.hw.binder.size_kbyte=1024
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    bluetooth.hfp.client=1 \
-    qcom.bluetooth.soc=smd \
-    ro.bluetooth.hfp.ver=1.7 \
-    ro.qualcomm.bt.hci_transport=smd
+	bluetooth.hfp.client=1 \
+	qcom.bluetooth.soc=smd \
+	ro.bluetooth.hfp.ver=1.7 \
+	ro.qualcomm.bt.hci_transport=smd
 
 # Boot
 PRODUCT_PROPERTY_OVERRIDES += \
-    sys.vendor.shutdown.waittime=500
+	sys.vendor.shutdown.waittime=500
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.camera.display.umax=1920x1080 \
+	persist.vendor.camera.display.umax=1920x1080 \
 	persist.vendor.camera.display.lmax=1280x720 \
-    vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp \
-    vendor.camera.lowpower.record.enable=1 \
-    media.camera.ts.monotonic=1 \
-    persist.camera.gyro.disable=0 \
-    persist.camera.isp.clock.optmz=0 \
-    persist.camera.stats.test=5 \
-    persist.vendor.qti.telephony.vt_cam_interface=1 \
-    vidc.enc.dcvs.extra-buff-count=2 \
-    persist.camera.CDS=off \
-    persist.camera.video.CDS=off \
-    persist.camera.HAL3.enabled=0 \
+	vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp \
+	vendor.camera.lowpower.record.enable=1 \
+	media.camera.ts.monotonic=1 \
+	persist.camera.gyro.disable=0 \
+	persist.camera.isp.clock.optmz=0 \
+	persist.camera.stats.test=5 \
+	persist.vendor.qti.telephony.vt_cam_interface=1 \
+	vidc.enc.dcvs.extra-buff-count=2 \
+	persist.camera.CDS=off \
+	persist.camera.video.CDS=off \
+	persist.camera.HAL3.enabled=0 \
 	persist.camera.eis.enable=1 \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
+	vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
 
 # Cne
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.cne.feature=1
+	persist.vendor.cne.feature=1
 
 # Coresight
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.debug.coresight.config=stm-events
+	persist.debug.coresight.config=stm-events
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.egl.hw=0 \
 	debug.enable.sglscale=1 \
-    debug.sf.latch_unsignaled=1 \
+	debug.sf.latch_unsignaled=1 \
 	debug.gralloc.enable_fb_ubwc=1 \
 	debug.mdpcomp.logs=0 \
 	debug.sf.enable_hwc_vds=1 \
 	debug.sf.hw=0 \
-    debug.cpurend.vsync=false \
+	debug.cpurend.vsync=false \
 	debug.sf.recomputecrop=0 \
 	dev.pm.dyn_samplingrate=1 \
 	persist.debug.wfd.enable=1 \
@@ -109,19 +109,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
+	drm.service.enabled=true
 
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.qfp=false
+	persist.qfp=false
 
 # Fm
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.fm.transmitter=false
+	ro.fm.transmitter=false
 
 # Frp
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.frp.pst=/dev/block/bootdevice/by-name/config
+	ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -131,28 +131,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
-    av.debug.disable.pers.cache=1 \
-    media.aac_51_output_enabled=true \
-    media.msm8956hw=0 \
-    media.stagefright.audio.sink=280 \
-    vendor.mm.enable.qcom_parser=1048575 \
-    mm.enable.smoothstreaming=true \
-    mmp.enable.3g2=true \
-    vendor.audio.hw.aac.encoder=true \
-    vendor.vidc.dec.downscalar_height=1088 \
-    vendor.vidc.dec.downscalar_width=1920 \
-    vendor.vidc.disable.split.mode=1 \
-    vendor.vidc.enc.disable.pq=true \
+	av.debug.disable.pers.cache=1 \
+	media.aac_51_output_enabled=true \
+	media.msm8956hw=0 \
+	media.stagefright.audio.sink=280 \
+	vendor.mm.enable.qcom_parser=1048575 \
+	mm.enable.smoothstreaming=true \
+	mmp.enable.3g2=true \
+	vendor.audio.hw.aac.encoder=true \
+	vendor.vidc.dec.downscalar_height=1088 \
+	vendor.vidc.dec.downscalar_width=1920 \
+	vendor.vidc.disable.split.mode=1 \
+	vendor.vidc.enc.disable.pq=true \
 	vendor.vidc.enc.disable_bframes=1 \
 	vendor.video.disable.ubwc=1
 
 # Memory optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.sys.fw.bservice_enable=true
+	ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so
+	ro.vendor.extension_library=libqti-perfd-client.so
 
 # QTI Performance
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -165,51 +165,51 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Netmgrd
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.netmgrd.qos.enable=true \
-    persist.vendor.data.mode=concurrent \
-    ro.vendor.use_data_netmgrd=true
+	persist.data.netmgrd.qos.enable=true \
+	persist.vendor.data.mode=concurrent \
+	ro.vendor.use_data_netmgrd=true
 
 # Nitz
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rild.nitz_plmn="" \
-    persist.rild.nitz_long_ons_0="" \
-    persist.rild.nitz_long_ons_1="" \
-    persist.rild.nitz_long_ons_2="" \
-    persist.rild.nitz_long_ons_3="" \
-    persist.rild.nitz_short_ons_0="" \
-    persist.rild.nitz_short_ons_1="" \
-    persist.rild.nitz_short_ons_2="" \
-    persist.rild.nitz_short_ons_3=""
+	persist.rild.nitz_plmn="" \
+	persist.rild.nitz_long_ons_0="" \
+	persist.rild.nitz_long_ons_1="" \
+	persist.rild.nitz_long_ons_2="" \
+	persist.rild.nitz_long_ons_3="" \
+	persist.rild.nitz_short_ons_0="" \
+	persist.rild.nitz_short_ons_1="" \
+	persist.rild.nitz_short_ons_2="" \
+	persist.rild.nitz_short_ons_3=""
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    DEVICE_PROVISIONED=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1 \
-    persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.radio.multisim.config=dsds \
-    persist.radio.sw_mbn_update=0 \
-    persist.vendor.radio.custom_ecc=1 \
-    persist.vendor.radio.rat_on=combine \
-    persist.vendor.radio.sib16_support=1 \
-    ril.subscription.types=NV,RUIM \
-    rild.libargs=-d/dev/smd0 \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    ro.telephony.call_ring.multiple=false \
-    ro.telephony.default_network=20,20 \
-    service.qti.ims.enabled=1 \
+	DEVICE_PROVISIONED=1 \
+	persist.dbg.volte_avail_ovr=1 \
+	persist.dbg.vt_avail_ovr=1 \
+	persist.dbg.wfc_avail_ovr=1 \
+	persist.vendor.radio.apm_sim_not_pwdn=1 \
+	persist.radio.multisim.config=dsds \
+	persist.radio.sw_mbn_update=0 \
+	persist.vendor.radio.custom_ecc=1 \
+	persist.vendor.radio.rat_on=combine \
+	persist.vendor.radio.sib16_support=1 \
+	ril.subscription.types=NV,RUIM \
+	rild.libargs=-d/dev/smd0 \
+	rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
+	ro.telephony.call_ring.multiple=false \
+	ro.telephony.default_network=20,20 \
+	service.qti.ims.enabled=1 \
 	persist.radio.aosp_usr_pref_sel=true \
 	persist.vendor.radio.prefer_spn=1 \
 	persist.vendor.qti.pie.telephony=1
 
 # Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.timed.enable=true
+	persist.timed.enable=true
 
 # Tcp
 PRODUCT_PROPERTY_OVERRIDES += \
-    net.tcp.2g_init_rwnd=10
+	net.tcp.2g_init_rwnd=10
 
 # UI
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -217,8 +217,8 @@ sys.use_fifo_ui=1
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0
+	wifi.interface=wlan0
 
 # Navbar
 PRODUCT_PROPERTY_OVERRIDES += \
-    qemu.hw.mainkeys=0
+	qemu.hw.mainkeys=0
