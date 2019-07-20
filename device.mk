@@ -94,16 +94,10 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-service \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.soundtrigger@2.1-impl \
-    android.hardware.audio@4.0 \
-    android.hardware.audio.common@4.0 \
-    android.hardware.audio.common@4.0-util \
     android.hardware.audio@4.0-impl \
-    android.hardware.audio.effect@4.0 \
+    android.hardware.audio@2.0-service \
     android.hardware.audio.effect@4.0-impl \
+    android.hardware.audio.effect@2.0-service \
     audio.a2dp.default \
     audio.primary.msm8952 \
     audio.r_submix.default \
@@ -114,40 +108,43 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     tinymix
 
-# Audio configuration
+# Audio Configurations (Shamrock)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
-	$(LOCAL_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
-	$(LOCAL_PATH)/audio/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
-	$(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
-	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
-	$(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
 	$(LOCAL_PATH)/audio/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
-	$(LOCAL_PATH)/audio/mixer_paths_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.xml
+    $(LOCAL_PATH)/audio/mixer_paths_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.xml \
+    $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+    $(LOCAL_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+    $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_platform_info_extcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_extcodec.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
 
-# XML Audio configuration files
+# Audio Configurations (CAF)
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
 	$(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
 	$(TOPDIR)frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
 	$(TOPDIR)frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
 	$(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-	$(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
+	$(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
+    $(TOPDIR)frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+    $(TOPDIR)frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
+    $(TOPDIR)frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
+    camera.device@3.2-impl \
+    libmm-qcamera \
     vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor
+    vendor.qti.hardware.camera.device@1.0_vendor \
+    Snap
 
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
-
-# Dex
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI
 
 # Display
 PRODUCT_PACKAGES += \
@@ -166,11 +163,7 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libqdMetaData.system \
     libgenlock \
-    libtinyxml \
-    vendor.display.config@1.0 \
-    vendor.display.config@1.1 \
-    vendor.display.config@1.0_vendor \
-    vendor.display.config@1.1_vendor
+    libtinyxml
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
@@ -271,17 +264,24 @@ PRODUCT_PACKAGES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libaacwrapper \
-    libmm-omxcore \
+    libOmxAacDec \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
+    libOmxEvrcDec \
     libOmxEvrcEnc \
+    libOmxFlacDec \
+    libOmxFlacEnc \
+    libOmxQcelp13Dev \
     libOmxQcelp13Enc \
+    libOmxSwVencMpeg4 \
     libOmxSwVencHevc \
     libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVidcCommon \
     libOmxVenc \
-    libstagefrighthw
+    libstagefrighthw \
+    libstagefright_soft_flacdec
 	
 # OTA
 PRODUCT_PACKAGES += \
@@ -332,16 +332,22 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.2 \
     android.hardware.radio.config@1.0 \
     android.hardware.secure_element@1.0 \
     librmnetctl \
     libcnefeatureconfig \
     libxml2 \
-    telephony-ext
+    telephony-ext \
+    ims-ext-common
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
+
+# Radio Configurations
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/data/dsi_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/data/dsi_config.xml \
+    $(LOCAL_PATH)/data/netmgr_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/data/netmgr_config.xml \
+    $(LOCAL_PATH)/data/qmi_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/data/qmi_config.xml
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
