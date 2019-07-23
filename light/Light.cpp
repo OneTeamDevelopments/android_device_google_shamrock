@@ -25,7 +25,9 @@
 #define LEDS            "/sys/class/leds/"
 
 #define LCD_LED         LEDS "lcd-backlight/"
-#define WHITE_LED       LEDS "red/"
+#define RED_LED         LEDS "red/"
+#define GREEN_LED       LEDS "green/"
+#define BLUE_LED        LEDS "blue/"
 
 #define BLINK           "blink"
 #define BRIGHTNESS      "brightness"
@@ -138,11 +140,13 @@ static std::string getScaledRamp(uint32_t brightness) {
     return ramp;
 }
 
-static void handleNotification(const LightState& state) {
-    uint32_t whiteBrightness = getScaledBrightness(state, getMaxBrightness(WHITE_LED MAX_BRIGHTNESS));
+static void handleAttention(const LightState& state) {
+    uint32_t Brightness = getScaledBrightness(state, getMaxBrightness(RED_LED MAX_BRIGHTNESS));
 
     /* Disable blinking */
-    set(WHITE_LED BLINK, 0);
+    set(RED_LED BLINK, 0);
+    set(GREEN_LED BLINK, 0);
+    set(BLUE_LED BLINK, 0);
 
     if (state.flashMode == Flash::TIMED) {
         /*
@@ -159,17 +163,91 @@ static void handleNotification(const LightState& state) {
             pauseHi = 0;
         }
 
-        /* White */
-        set(WHITE_LED START_IDX, 0 * RAMP_STEPS);
-        set(WHITE_LED DUTY_PCTS, getScaledRamp(whiteBrightness));
-        set(WHITE_LED PAUSE_LO, pauseLo);
-        set(WHITE_LED PAUSE_HI, pauseHi);
-        set(WHITE_LED RAMP_STEP_MS, stepDuration);
+        /* Red */
+        set(RED_LED START_IDX, 0 * RAMP_STEPS);
+        set(RED_LED DUTY_PCTS, getScaledRamp(Brightness));
+        set(RED_LED PAUSE_LO, pauseLo);
+        set(RED_LED PAUSE_HI, pauseHi);
+        set(RED_LED RAMP_STEP_MS, stepDuration);
 
         /* Enable blinking */
-        set(WHITE_LED BLINK, 1);
+        set(RED_LED BLINK, 1);
     } else {
-        set(WHITE_LED BRIGHTNESS, whiteBrightness);
+        set(RED_LED BRIGHTNESS, Brightness);
+    }
+}
+
+static void handleNotification(const LightState& state) {
+    uint32_t Brightness = getScaledBrightness(state, getMaxBrightness(BLUE_LED MAX_BRIGHTNESS));
+
+    /* Disable blinking */
+    set(RED_LED BLINK, 0);
+    set(GREEN_LED BLINK, 0);
+    set(BLUE_LED BLINK, 0);
+
+    if (state.flashMode == Flash::TIMED) {
+        /*
+         * If the flashOnMs duration is not long enough to fit ramping up
+         * and down at the default step duration, step duration is modified
+         * to fit.
+         */
+        int32_t stepDuration = RAMP_STEP_DURATION;
+        int32_t pauseHi = state.flashOnMs - (stepDuration * RAMP_STEPS * 2);
+        int32_t pauseLo = state.flashOffMs;
+
+        if (pauseHi < 0) {
+            //stepDuration = state.flashOnMs / (RAMP_STEPS * 2);
+            pauseHi = 0;
+        }
+
+        /* Blue */
+        set(BLUE_LED START_IDX, 0 * RAMP_STEPS);
+        set(BLUE_LED DUTY_PCTS, getScaledRamp(Brightness));
+        set(BLUE_LED PAUSE_LO, pauseLo);
+        set(BLUE_LED PAUSE_HI, pauseHi);
+        set(BLUE_LED RAMP_STEP_MS, stepDuration);
+
+        /* Enable blinking */
+        set(BLUE_LED BLINK, 1);
+    } else {
+        set(BLUE_LED BRIGHTNESS, Brightness);
+    }
+}
+
+static void handleBattery(const LightState& state) {
+    uint32_t Brightness = getScaledBrightness(state, getMaxBrightness(GREEN_LED MAX_BRIGHTNESS));
+
+    /* Disable blinking */
+    set(RED_LED BLINK, 0);
+    set(GREEN_LED BLINK, 0);
+    set(BLUE_LED BLINK, 0);
+
+    if (state.flashMode == Flash::TIMED) {
+        /*
+         * If the flashOnMs duration is not long enough to fit ramping up
+         * and down at the default step duration, step duration is modified
+         * to fit.
+         */
+        int32_t stepDuration = RAMP_STEP_DURATION;
+        int32_t pauseHi = state.flashOnMs - (stepDuration * RAMP_STEPS * 2);
+        int32_t pauseLo = state.flashOffMs;
+
+        if (pauseHi < 0) {
+            //stepDuration = state.flashOnMs / (RAMP_STEPS * 2);
+            pauseHi = 0;
+        }
+
+        /* Green */
+        set(GREEN_LED START_IDX, 0 * RAMP_STEPS);
+        set(GREEN_LED DUTY_PCTS, getScaledRamp(Brightness));
+        set(GREEN_LED PAUSE_LO, pauseLo);
+        set(GREEN_LED PAUSE_HI, pauseHi);
+        set(GREEN_LED RAMP_STEP_MS, stepDuration);
+
+        /* Enable blinking */
+        set(GREEN_LED BLINK, 1);
+    } else {
+        set(GREEN_LED BRIGHTNESS, Brightness);
     }
 }
 
@@ -179,9 +257,9 @@ static inline bool isLit(const LightState& state) {
 
 /* Keep sorted in the order of importance. */
 static std::vector<LightBackend> backends = {
-    { Type::ATTENTION, handleNotification },
+    { Type::ATTENTION, handleAttention },
     { Type::NOTIFICATIONS, handleNotification },
-    { Type::BATTERY, handleNotification },
+    { Type::BATTERY, handleBattery },
     { Type::BACKLIGHT, handleBacklight },
 };
 
