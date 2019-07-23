@@ -99,28 +99,29 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
-debug.sf.hw=0 \
-debug.egl.hw=0 \
-persist.hwc.mdpcomp.enable=true \
-debug.mdpcomp.logs=0 \
-dev.pm.dyn_samplingrate=1 \
-persist.demo.hdmirotationlock=false \
-debug.enable.sglscale=1 \
-ro.opengles.version=196610 \
-ro.sf.lcd_density=420 \
-debug.hwui.use_buffer_age=false \
-persist.debug.wfd.enable=1 \
-persist.demo.hdmirotationlock=false \
-persist.hwc.enable_vds=1 \
-persist.hwc.mdpcomp.enable=true \
-ro.opengles.version=196610 \
-ro.qualcomm.cabl=0 \
-ro.sf.lcd_density=420 \
-ro.vendor.display.cabl=2 \
-sdm.debug.disable_skip_validate=1 \
-vendor.display.disable_skip_validate=1 \
-vendor.display.enable_default_color_mode=1 \
-vendor.gralloc.enable_fb_ubwc=1
+	debug.egl.hw=0 \
+	debug.enable.sglscale=1 \
+	debug.sf.latch_unsignaled=1 \
+	debug.gralloc.enable_fb_ubwc=1 \
+	debug.mdpcomp.logs=0 \
+	debug.sf.enable_hwc_vds=1 \
+	debug.sf.hw=0 \
+	debug.cpurend.vsync=false \
+	debug.sf.recomputecrop=0 \
+	dev.pm.dyn_samplingrate=1 \
+	persist.debug.wfd.enable=1 \
+	persist.demo.hdmirotationlock=false \
+	persist.hwc.enable_vds=1 \
+	persist.hwc.mdpcomp.enable=true \
+	ro.opengles.version=196610 \
+	ro.qualcomm.cabl=0 \
+	ro.sf.lcd_density=420 \
+	ro.vendor.display.cabl=2 \
+	sdm.debug.disable_skip_validate=1 \
+	vendor.display.disable_skip_validate=1 \
+	vendor.display.enable_default_color_mode=0 \
+	vendor.gralloc.enable_fb_ubwc=1
+
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -253,20 +254,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Navbar
 PRODUCT_PROPERTY_OVERRIDES += \
 	qemu.hw.mainkeys=0
-	
-# Ram Fix
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.lge.proximity.delay=25 \
-mot.proximity.delay=25 \
-ro.telephony.call_ring.delay=0 \
-ring.delay=0 \
-windowsmgr.max_events_per_sec=0 \
-ro.min_pointer_dur=8 \
-ro.max.fling_velocity=12000 \
-ro.min.fling_velocity=8000 \
-ro.media.enc.jpeg.quality=100 \
-ro.config.hw_quickpoweron=truev
-persist.cust.tel.eons=1  \
-ro.config.hw_fast_dormancy=1 \
-persist.adb.notify=0 \
-ro.HOME_APP_ADJ=1
