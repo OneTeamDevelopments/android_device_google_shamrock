@@ -1,11 +1,15 @@
 #
 # system.prop for shamrock
 #
-
+	
 # ART
 PRODUCT_PROPERTY_OVERRIDES += \
-	dalvik.vm.dex2oat-filter=speed \
-	dalvik.vm.image-dex2oat-filter=speed
+    dalvik.vm.dex2oat-filter=speed \
+    dalvik.vm.image-dex2oat-filter=speed \
+    ro.vendor.qti.am.reschedule_service=true \
+    ro.sys.fw.dex2oat_thread_count=8 \
+    dalvik.vm.boot-dex2oat-threads=8 \
+    dalvik.vm.dex2oat-threads=8
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -254,3 +258,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Navbar
 PRODUCT_PROPERTY_OVERRIDES += \
 	qemu.hw.mainkeys=0
+
+# Ram Configuration
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.lge.proximity.delay=25 \
+mot.proximity.delay=25 \
+ro.telephony.call_ring.delay=0 \
+ring.delay=0 \
+windowsmgr.max_events_per_sec=0 \
+ro.min_pointer_dur=8 \
+ro.max.fling_velocity=12000 \
+ro.min.fling_velocity=8000 \
+ro.media.enc.jpeg.quality=100 \
+ro.config.hw_quickpoweron=truev
+persist.cust.tel.eons=1  \
+ro.config.hw_fast_dormancy=1 \
+persist.adb.notify=0 \
+ro.HOME_APP_ADJ=1
