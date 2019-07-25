@@ -43,6 +43,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-google
 #    PRIVATE_BUILD_DESC="shamrock-user 8.1.0 OPM1.171019.019 V10.0.4.0.OEGMIFH release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-#BUILD_FINGERPRINT := "Google/shamrock/shamrock:8.1.0/OPM1.171019.019/V10.0.4.0.OEGMIFH:user/release-keys"
+BUILD_FINGERPRINT := "google/blueline/blueline:9/PQ3A.190705.003/5600800:user/release-keys"
 
 CPU_MODEL := Snapdragon_617
