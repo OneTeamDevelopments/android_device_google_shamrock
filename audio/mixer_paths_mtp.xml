@@ -924,7 +924,7 @@
 
    <path name="speaker-mic">
         <path name="adc1" />
-        <ctl name="IIR1 INP1 MUX" value="DEC1" />
+        <ctl name="IIR1 INP1 MUX" value="100" />
    </path>
 
     <path name="handset">
@@ -937,7 +937,7 @@
 
     <path name="handset-mic">
         <path name="adc1" />
-        <ctl name="IIR1 INP1 MUX" value="DEC1" />
+        <ctl name="IIR1 INP1 MUX" value="100" />
     </path>
 
     <path name="handset-secondary-mic">
