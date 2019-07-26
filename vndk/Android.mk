@@ -40,7 +40,8 @@ EXTRA_VENDOR_LIBRARIES := \
     vendor.display.config@1.1 \
     vendor.lineage.power@1.0 \
     libbfqio \
-    libbinder
+    libbinder \
+    libui
 
 
 #-------------------------------------------------------------------------------
