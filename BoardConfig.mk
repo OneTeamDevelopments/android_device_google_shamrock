@@ -217,9 +217,7 @@ $(shell sed -i "s/security.perf_harden=1/security.perf_harden=0/g" build/make/co
 PRODUCT_VENDOR_MOVE_ENABLED := true
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 PRODUCT_FULL_TREBLE_OVERRIDE := true
-
-# VNDK Lite Fix
-$(shell sed -i "/ro.vndk.lite/d" build/make/core/Makefile)
+PRODUCT_TREBLE_LINKER_NAMESPACES_OVERRIDE := false
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
