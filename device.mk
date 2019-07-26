@@ -440,3 +440,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
     ro.adb.secure=0
 
+# First API Level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.first_api_level=23
