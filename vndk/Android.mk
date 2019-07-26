@@ -28,10 +28,19 @@ VNDK_SP_LIBRARIES := \
     libz
 
 EXTRA_VENDOR_LIBRARIES := \
+    android.hardware.graphics.allocator@2.0 \
+    android.hardware.graphics.common@1.0 \
+    android.hardware.graphics.mapper@2.0 \
+    android.hardware.configstore@1.0 \
+    android.hardware.configstore@1.1 \
+    android.hardware.configstore-utils \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0 \
     vendor.display.config@1.0 \
-    vendor.display.config@1.1
+    vendor.display.config@1.1 \
+    vendor.lineage.power@1.0 \
+    libbfqio \
+    libbinder
 
 
 #-------------------------------------------------------------------------------
