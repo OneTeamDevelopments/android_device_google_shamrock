@@ -186,9 +186,9 @@ PRODUCT_PACKAGES += \
     libebtc
 
 # FM
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+# PRODUCT_PACKAGES += \
+#     FMRadio \
+#     libfmjni
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
