@@ -237,15 +237,15 @@ static void handleBattery(const LightState& state) {
             pauseHi = 0;
         }
 
-        /* Green */
-        set(GREEN_LED START_IDX, 0 * RAMP_STEPS);
-        set(GREEN_LED DUTY_PCTS, getScaledRamp(Brightness));
-        set(GREEN_LED PAUSE_LO, pauseLo);
-        set(GREEN_LED PAUSE_HI, pauseHi);
-        set(GREEN_LED RAMP_STEP_MS, stepDuration);
+        /* Red */
+        set(RED_LED START_IDX, 0 * RAMP_STEPS);
+        set(RED_LED DUTY_PCTS, getScaledRamp(Brightness));
+        set(RED_LED PAUSE_LO, pauseLo);
+        set(RED_LED PAUSE_HI, pauseHi);
+        set(RED_LED RAMP_STEP_MS, stepDuration);
 
         /* Enable blinking */
-        set(GREEN_LED BLINK, 1);
+        set(RED_LED BLINK, 1);
     } else {
         set(GREEN_LED BRIGHTNESS, Brightness);
     }
