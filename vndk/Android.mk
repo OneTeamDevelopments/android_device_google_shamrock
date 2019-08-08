@@ -1,8 +1,11 @@
 VNDK_SP_LIBRARIES := \
     android.hardware.graphics.allocator@2.0 \
-    android.hardware.graphics.common@1.0 \
     android.hardware.graphics.mapper@2.0 \
+    android.hardware.graphics.mapper@2.1 \
+    android.hardware.graphics.common@1.0 \
+    android.hardware.graphics.common@1.1 \
     android.hardware.renderscript@1.0 \
+    android.hidl.base@1.0 \
     android.hidl.memory@1.0 \
     libRSCpuRef \
     libRSDriver \
@@ -24,25 +27,19 @@ VNDK_SP_LIBRARIES := \
     liblzma \
     libpng \
     libunwind \
+    libunwindstack \
     libutils \
-    libz
+    libutilscallstack  \
+    libdexfile
 
 EXTRA_VENDOR_LIBRARIES := \
-    android.hardware.graphics.allocator@2.0 \
-    android.hardware.graphics.common@1.0 \
-    android.hardware.graphics.mapper@2.0 \
-    android.hardware.configstore@1.0 \
-    android.hardware.configstore@1.1 \
-    android.hardware.configstore-utils \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0 \
     vendor.display.config@1.0 \
     vendor.display.config@1.1 \
     vendor.lineage.power@1.0 \
     libbfqio \
-    libbinder \
     libui
-
 
 #-------------------------------------------------------------------------------
 # VNDK Modules

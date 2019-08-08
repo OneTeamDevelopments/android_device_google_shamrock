@@ -48,6 +48,7 @@ on init
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
+    export LD_CONFIG_FILE /vendor/etc/ld.config.oneteam.txt
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -672,8 +673,5 @@ service vendor.audio-hal-2-0 /vendor/bin/hw/android.hardware.audio@2.0-service
     interface android.hardware.audio@2.0::IDevicesFactory default
 	
 on property:dev.bootcomplete=1
-<<<<<<< HEAD
     swapon_all /vendor/etc/fstab.qcom
-=======
     setprop sys.io.scheduler "bfq"
->>>>>>> d801cfb... Nuke s2s
